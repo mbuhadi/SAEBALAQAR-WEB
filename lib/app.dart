@@ -559,10 +559,7 @@ class MyApp extends StatelessWidget {
                       child: LayoutBuilder(
                         builder: (context, constraints) {
                           if (constraints.maxWidth > 1200) {
-                            return SizedBox(
-                              child: DesktopNavbar,
-                              width: 500,
-                            );
+                            return MobileAppBarOne;
                           } else if (constraints.maxWidth > 800 &&
                               constraints.maxWidth < 1200) {
                             return MobileAppBarOne;
