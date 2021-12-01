@@ -101,8 +101,16 @@ class MyApp extends StatelessWidget {
               const Spacer(flex: 8),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 3, 0, 3),
-                child: Image.asset('images/Logo2.png',
-                    fit: BoxFit.cover, height: 72),
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () {
+                      nagivator.currentState!.pushReplacementNamed("/");
+                    },
+                    child: Image.asset('images/Logo2.png',
+                        fit: BoxFit.cover, height: 72),
+                  ),
+                ),
               ),
               const Spacer(flex: 1),
             ],
@@ -117,10 +125,20 @@ class MyApp extends StatelessWidget {
                         padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                         children: [
                           DrawerHeader(
-                              child: FittedBox(
-                            child: Image.asset('images/Logo2.png'),
-                            fit: BoxFit.fitWidth,
-                          )),
+                            child: FittedBox(
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    nagivator.currentState!
+                                        .pushReplacementNamed("/");
+                                  },
+                                  child: Image.asset('images/Logo2.png'),
+                                ),
+                              ),
+                              fit: BoxFit.fitWidth,
+                            ),
+                          ),
                           OnHoverButton(builder: (isHovered) {
                             final colorOfButton = isHovered
                                 ? Colors.teal[600]
