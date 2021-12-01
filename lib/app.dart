@@ -87,147 +87,22 @@ class MyApp extends StatelessWidget {
         var loggedIn = Get.find<AuthController>().isLoggedIn;
         var myOffice = Get.find<OfficeController>().office;
         var adminUser = Get.find<AdminController>().adminUser;
-        AppBar DesktopNavbar = AppBar(
-          iconTheme: const IconThemeData(color: Color(0xFF040036)),
-          elevation: 1,
-          backgroundColor: Colors.white,
-          leadingWidth: 300,
-          leading: SizedBox(
-            child: Image.asset('images/Logo2.png'),
-            height: 60,
-          ),
-          actions: [
-            const Spacer(flex: 15),
-            OnHoverButton(builder: (isHovered) {
-              final colorOfButton =
-                  isHovered ? Colors.teal[600] : const Color(0xff01062e);
-              return TextButton(
-                onPressed: () =>
-                    nagivator.currentState!.pushReplacementNamed("/"),
-                child: Text(
-                  "الرئيسي",
-                  style: TextStyle(color: colorOfButton),
-                ),
-              );
-            }),
-            const Spacer(flex: 36),
-            Obx(() => adminUser.value == null
-                ? const SizedBox(width: 0)
-                : OnHoverButton(builder: (isHovered) {
-                    final colorOfButton =
-                        isHovered ? Colors.teal[600] : const Color(0xff01062e);
-                    return TextButton(
-                      onPressed: () => nagivator.currentState!
-                          .pushReplacementNamed("/admin"),
-                      child: Text(
-                        "إدارة",
-                        style: TextStyle(color: colorOfButton),
-                      ),
-                    );
-                  })),
-            const Spacer(flex: 1),
-            Obx(() => loggedIn.value == false
-                ? const SizedBox(width: 0)
-                : OnHoverButton(builder: (isHovered) {
-                    final colorOfButton =
-                        isHovered ? Colors.teal[600] : Color(0xff01062e);
-                    return TextButton(
-                      onPressed: () => nagivator.currentState!
-                          .pushReplacementNamed("/create"),
-                      child: Text(
-                        "إنشاء",
-                        style: TextStyle(color: colorOfButton),
-                      ),
-                    );
-                  })),
-            const Spacer(flex: 1),
-            Obx(() => loggedIn.value == false
-                ? Container()
-                : OnHoverButton(builder: (isHovered) {
-                    final colorOfButton =
-                        isHovered ? Colors.teal[600] : Color(0xff01062e);
-                    return TextButton(
-                      onPressed: () => nagivator.currentState!
-                          .pushReplacementNamed("/offers"),
-                      child: Text(
-                        "عروض",
-                        style: TextStyle(color: colorOfButton),
-                      ),
-                    );
-                  })),
-            const Spacer(flex: 1),
-            Obx(() => loggedIn.value == false
-                ? const SizedBox(width: 0)
-                : OnHoverButton(builder: (isHovered) {
-                    final colorOfButton =
-                        isHovered ? Colors.teal[600] : Color(0xff01062e);
-                    return TextButton(
-                      onPressed: () => nagivator.currentState!
-                          .pushReplacementNamed("/profile"),
-                      child: Text(
-                        "شخصي",
-                        style: TextStyle(color: colorOfButton),
-                      ),
-                    );
-                  })),
-            const Spacer(flex: 1),
-            OnHoverButton(builder: (isHovered) {
-              final colorOfButton =
-                  isHovered ? Colors.teal[600] : Color(0xff01062e);
-              return TextButton(
-                  onPressed: () {
-                    nagivator.currentState!.pushReplacementNamed("/about");
-                  },
-                  child: Text(
-                    "من نحن",
-                    style: TextStyle(color: colorOfButton),
-                  ));
-            }),
-            const Spacer(flex: 1),
-            Obx(() => loggedIn.value == false
-                ? OnHoverButton(builder: (isHovered) {
-                    final colorOfButton =
-                        isHovered ? Colors.teal[600] : Color(0xff01062e);
-                    return TextButton(
-                      onPressed: () => nagivator.currentState!
-                          .pushReplacementNamed("/login"),
-                      child: Text(
-                        "دخول",
-                        style: TextStyle(color: colorOfButton),
-                      ),
-                    );
-                  })
-                : OnHoverButton(builder: (isHovered) {
-                    final colorOfButton =
-                        isHovered ? Colors.teal[600] : Color(0xff01062e);
-                    return TextButton(
-                      onPressed: () {
-                        nagivator.currentState!.pushReplacementNamed("/login");
-                        Get.find<AuthController>().logout();
-                        Get.find<AdminController>().admin_logout();
-                      },
-                      child: Text(
-                        "خروج",
-                        style: TextStyle(color: colorOfButton),
-                      ),
-                    );
-                  })),
-            const Spacer(flex: 5),
-          ],
-        );
-        AppBar MobileAppBarOne = AppBar(
+        AppBar mobileAppBarOne = AppBar(
             elevation: 1,
             backgroundColor: Colors.white,
             leadingWidth: 200,
             leading: IconButton(
-              icon: Icon(Icons.menu, size: 40), // change this size and style
+              icon: const Icon(Icons.menu,
+                  size: 40), // change this size and style
               onPressed: () => _scaffoldKey.currentState!.openDrawer(),
             ),
+            toolbarHeight: 73,
             actions: [
               const Spacer(flex: 8),
-              SizedBox(
-                child: Image.asset('images/Logo2.png'),
-                height: 60,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 3, 0, 3),
+                child: Image.asset('images/Logo2.png',
+                    fit: BoxFit.cover, height: 72),
               ),
               const Spacer(flex: 1),
             ],
@@ -285,10 +160,10 @@ class MyApp extends StatelessWidget {
                               : OnHoverButton(builder: (isHovered) {
                                   final colorOfButton = isHovered
                                       ? Colors.teal[600]
-                                      : Color(0xff01062e);
+                                      : const Color(0xff01062e);
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[100]
-                                      : Color(0x00ffffff);
+                                      : const Color(0x00ffffff);
                                   return TextButton(
                                     style: ButtonStyle(
                                         backgroundColor:
@@ -325,10 +200,10 @@ class MyApp extends StatelessWidget {
                               : OnHoverButton(builder: (isHovered) {
                                   final colorOfButton = isHovered
                                       ? Colors.teal[600]
-                                      : Color(0xff01062e);
+                                      : const Color(0xff01062e);
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[200]
-                                      : Color(0x00ffffff);
+                                      : const Color(0x00ffffff);
                                   return TextButton(
                                     style: ButtonStyle(
                                         backgroundColor:
@@ -370,7 +245,7 @@ class MyApp extends StatelessWidget {
                                       : Colors.orange;
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[200]
-                                      : Color(0x00ffffff);
+                                      : const Color(0x00ffffff);
                                   return TextButton(
                                     style: ButtonStyle(
                                         backgroundColor:
@@ -408,10 +283,10 @@ class MyApp extends StatelessWidget {
                               : OnHoverButton(builder: (isHovered) {
                                   final colorOfButton = isHovered
                                       ? Colors.teal[600]
-                                      : Color(0xff01062e);
+                                      : const Color(0xff01062e);
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[200]
-                                      : Color(0x00ffffff);
+                                      : const Color(0x00ffffff);
                                   return TextButton(
                                     style: ButtonStyle(
                                         backgroundColor:
@@ -442,10 +317,10 @@ class MyApp extends StatelessWidget {
                           OnHoverButton(builder: (isHovered) {
                             final colorOfButton = isHovered
                                 ? Colors.teal[600]
-                                : Color(0xff01062e);
+                                : const Color(0xff01062e);
                             final colorOfBackground = isHovered
                                 ? Colors.grey[200]
-                                : Color(0x00ffffff);
+                                : const Color(0x00ffffff);
                             return TextButton(
                                 style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
@@ -479,10 +354,10 @@ class MyApp extends StatelessWidget {
                               ? OnHoverButton(builder: (isHovered) {
                                   final colorOfButton = isHovered
                                       ? Colors.teal[600]
-                                      : Color(0xff01062e);
+                                      : const Color(0xff01062e);
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[200]
-                                      : Color(0x00ffffff);
+                                      : const Color(0x00ffffff);
                                   return TextButton(
                                     style: ButtonStyle(
                                         backgroundColor:
@@ -517,7 +392,7 @@ class MyApp extends StatelessWidget {
                                       : const Color(0xff01062e);
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[200]
-                                      : Color(0x00ffffff);
+                                      : const Color(0x00ffffff);
                                   return TextButton(
                                     style: ButtonStyle(
                                         backgroundColor:
@@ -559,12 +434,12 @@ class MyApp extends StatelessWidget {
                       child: LayoutBuilder(
                         builder: (context, constraints) {
                           if (constraints.maxWidth > 1200) {
-                            return MobileAppBarOne;
+                            return mobileAppBarOne;
                           } else if (constraints.maxWidth > 800 &&
                               constraints.maxWidth < 1200) {
-                            return MobileAppBarOne;
+                            return mobileAppBarOne;
                           } else {
-                            return MobileAppBarOne;
+                            return mobileAppBarOne;
                           }
                         },
                       ),
@@ -610,3 +485,139 @@ class MyApp extends StatelessWidget {
 //                 ),
 //               );
 //             }),
+
+
+
+
+
+
+
+
+        // AppBar DesktopNavbar = AppBar(
+        //   iconTheme: const IconThemeData(color: Color(0xFF040036)),
+        //   elevation: 1,
+        //   backgroundColor: Colors.white,
+        //   leadingWidth: 300,
+        //   leading: SizedBox(
+        //     child: Image.asset('images/Logo2.png'),
+        //     height: 60,
+        //   ),
+        //   actions: [
+        //     const Spacer(flex: 15),
+        //     OnHoverButton(builder: (isHovered) {
+        //       final colorOfButton =
+        //           isHovered ? Colors.teal[600] : const Color(0xff01062e);
+        //       return TextButton(
+        //         onPressed: () =>
+        //             nagivator.currentState!.pushReplacementNamed("/"),
+        //         child: Text(
+        //           "الرئيسي",
+        //           style: TextStyle(color: colorOfButton),
+        //         ),
+        //       );
+        //     }),
+        //     const Spacer(flex: 36),
+        //     Obx(() => adminUser.value == null
+        //         ? const SizedBox(width: 0)
+        //         : OnHoverButton(builder: (isHovered) {
+        //             final colorOfButton =
+        //                 isHovered ? Colors.teal[600] : const Color(0xff01062e);
+        //             return TextButton(
+        //               onPressed: () => nagivator.currentState!
+        //                   .pushReplacementNamed("/admin"),
+        //               child: Text(
+        //                 "إدارة",
+        //                 style: TextStyle(color: colorOfButton),
+        //               ),
+        //             );
+        //           })),
+        //     const Spacer(flex: 1),
+        //     Obx(() => loggedIn.value == false
+        //         ? const SizedBox(width: 0)
+        //         : OnHoverButton(builder: (isHovered) {
+        //             final colorOfButton =
+        //                 isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //             return TextButton(
+        //               onPressed: () => nagivator.currentState!
+        //                   .pushReplacementNamed("/create"),
+        //               child: Text(
+        //                 "إنشاء",
+        //                 style: TextStyle(color: colorOfButton),
+        //               ),
+        //             );
+        //           })),
+        //     const Spacer(flex: 1),
+        //     Obx(() => loggedIn.value == false
+        //         ? Container()
+        //         : OnHoverButton(builder: (isHovered) {
+        //             final colorOfButton =
+        //                 isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //             return TextButton(
+        //               onPressed: () => nagivator.currentState!
+        //                   .pushReplacementNamed("/offers"),
+        //               child: Text(
+        //                 "عروض",
+        //                 style: TextStyle(color: colorOfButton),
+        //               ),
+        //             );
+        //           })),
+        //     const Spacer(flex: 1),
+        //     Obx(() => loggedIn.value == false
+        //         ? const SizedBox(width: 0)
+        //         : OnHoverButton(builder: (isHovered) {
+        //             final colorOfButton =
+        //                 isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //             return TextButton(
+        //               onPressed: () => nagivator.currentState!
+        //                   .pushReplacementNamed("/profile"),
+        //               child: Text(
+        //                 "شخصي",
+        //                 style: TextStyle(color: colorOfButton),
+        //               ),
+        //             );
+        //           })),
+        //     const Spacer(flex: 1),
+        //     OnHoverButton(builder: (isHovered) {
+        //       final colorOfButton =
+        //           isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //       return TextButton(
+        //           onPressed: () {
+        //             nagivator.currentState!.pushReplacementNamed("/about");
+        //           },
+        //           child: Text(
+        //             "من نحن",
+        //             style: TextStyle(color: colorOfButton),
+        //           ));
+        //     }),
+        //     const Spacer(flex: 1),
+        //     Obx(() => loggedIn.value == false
+        //         ? OnHoverButton(builder: (isHovered) {
+        //             final colorOfButton =
+        //                 isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //             return TextButton(
+        //               onPressed: () => nagivator.currentState!
+        //                   .pushReplacementNamed("/login"),
+        //               child: Text(
+        //                 "دخول",
+        //                 style: TextStyle(color: colorOfButton),
+        //               ),
+        //             );
+        //           })
+        //         : OnHoverButton(builder: (isHovered) {
+        //             final colorOfButton =
+        //                 isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //             return TextButton(
+        //               onPressed: () {
+        //                 nagivator.currentState!.pushReplacementNamed("/login");
+        //                 Get.find<AuthController>().logout();
+        //                 Get.find<AdminController>().admin_logout();
+        //               },
+        //               child: Text(
+        //                 "خروج",
+        //                 style: TextStyle(color: colorOfButton),
+        //               ),
+        //             );
+        //           })),
+        //     const Spacer(flex: 5),
+        //   ],
+        // );
