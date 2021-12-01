@@ -132,6 +132,7 @@ class MyApp extends StatelessWidget {
                                   onTap: () {
                                     nagivator.currentState!
                                         .pushReplacementNamed("/");
+                                    _scaffoldKey.currentState!.openEndDrawer();
                                   },
                                   child: Image.asset('images/Logo2.png'),
                                 ),
@@ -150,8 +151,11 @@ class MyApp extends StatelessWidget {
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
                                       colorOfBackground)),
-                              onPressed: () => nagivator.currentState!
-                                  .pushReplacementNamed("/"),
+                              onPressed: () {
+                                nagivator.currentState!
+                                    .pushReplacementNamed("/");
+                                _scaffoldKey.currentState!.openEndDrawer();
+                              },
                               child: Padding(
                                 padding:
                                     const EdgeInsets.fromLTRB(0, 15, 0, 15),
@@ -187,8 +191,12 @@ class MyApp extends StatelessWidget {
                                         backgroundColor:
                                             MaterialStateProperty.all(
                                                 colorOfBackground)),
-                                    onPressed: () => nagivator.currentState!
-                                        .pushReplacementNamed("/admin"),
+                                    onPressed: () {
+                                      nagivator.currentState!
+                                          .pushReplacementNamed("/admin");
+                                      _scaffoldKey.currentState!
+                                          .openEndDrawer();
+                                    },
                                     child: Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           0, 15, 0, 15),
@@ -227,8 +235,12 @@ class MyApp extends StatelessWidget {
                                         backgroundColor:
                                             MaterialStateProperty.all(
                                                 colorOfBackground)),
-                                    onPressed: () => nagivator.currentState!
-                                        .pushReplacementNamed("/create"),
+                                    onPressed: () {
+                                      nagivator.currentState!
+                                          .pushReplacementNamed("/create");
+                                      _scaffoldKey.currentState!
+                                          .openEndDrawer();
+                                    },
                                     child: Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           0, 15, 0, 15),
@@ -269,8 +281,12 @@ class MyApp extends StatelessWidget {
                                         backgroundColor:
                                             MaterialStateProperty.all(
                                                 colorOfBackground)),
-                                    onPressed: () => nagivator.currentState!
-                                        .pushReplacementNamed("/offers"),
+                                    onPressed: () {
+                                      nagivator.currentState!
+                                          .pushReplacementNamed("/offers");
+                                      _scaffoldKey.currentState!
+                                          .openEndDrawer();
+                                    },
                                     child: Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           0, 15, 0, 15),
@@ -310,8 +326,12 @@ class MyApp extends StatelessWidget {
                                         backgroundColor:
                                             MaterialStateProperty.all(
                                                 colorOfBackground)),
-                                    onPressed: () => nagivator.currentState!
-                                        .pushReplacementNamed("/profile"),
+                                    onPressed: () {
+                                      nagivator.currentState!
+                                          .pushReplacementNamed("/profile");
+                                      _scaffoldKey.currentState!
+                                          .openEndDrawer();
+                                    },
                                     child: Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           0, 15, 0, 15),
@@ -346,10 +366,7 @@ class MyApp extends StatelessWidget {
                                 onPressed: () {
                                   nagivator.currentState!
                                       .popAndPushNamed("/about");
-                                  context
-                                      .findRootAncestorStateOfType<
-                                          DrawerControllerState>()
-                                      ?.close();
+                                  _scaffoldKey.currentState!.openEndDrawer();
                                 },
                                 child: Padding(
                                   padding:
@@ -381,8 +398,12 @@ class MyApp extends StatelessWidget {
                                         backgroundColor:
                                             MaterialStateProperty.all(
                                                 colorOfBackground)),
-                                    onPressed: () => nagivator.currentState!
-                                        .pushReplacementNamed("/login"),
+                                    onPressed: () {
+                                      nagivator.currentState!
+                                          .pushReplacementNamed("/login");
+                                      _scaffoldKey.currentState!
+                                          .openEndDrawer();
+                                    },
                                     child: Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           0, 15, 0, 15),
@@ -422,6 +443,8 @@ class MyApp extends StatelessWidget {
                                       Get.find<AuthController>().logout();
                                       Get.find<AdminController>()
                                           .admin_logout();
+                                      _scaffoldKey.currentState!
+                                          .openEndDrawer();
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.fromLTRB(
