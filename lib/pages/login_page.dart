@@ -163,7 +163,8 @@ class _LoginPageState extends State<LoginPage> {
                                           Navigator.of(context).pop();
                                           Navigator.pushReplacementNamed(
                                               context, '/profile');
-                                          print('VERIFIED!!');
+                                          const AlertDialog(
+                                              title: Text('Login Successful!'));
                                         } else {
                                           print('error');
                                         }

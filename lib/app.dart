@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Saeb',
+      title: "Saeb Alalqar",
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       theme: ThemeData(
@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
         '/createdeal': (_) => const CreateDealPage(),
         '/office': (_) => const OfficePage(),
         '/success': (_) => PaymentResultPage(),
-        '/': (_) => const LandingPage(),
+        '/': (_) => LandingPage(),
         '/about': (_) => const AboutUs(),
         // '/search': (_) => const SearchPage(),
         '/admin': (_) => const AdminPage(),
@@ -445,6 +445,8 @@ class MyApp extends StatelessWidget {
                                           .admin_logout();
                                       _scaffoldKey.currentState!
                                           .openEndDrawer();
+                                      const AlertDialog(
+                                          title: Text('Logout Successful!'));
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.fromLTRB(

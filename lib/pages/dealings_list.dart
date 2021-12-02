@@ -31,7 +31,6 @@ class _DealingsListState extends State<DealingsList> {
             if (snapshot.connectionState != ConnectionState.done) {
               return const Center(child: CircularProgressIndicator());
             }
-
             if (snapshot.data!.isEmpty) {
               return const Center(
                   child: Text(
