@@ -12,7 +12,7 @@ class DesktopNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFFEFEFE),
       leadingWidth: 200,
       leading: OverflowBox(
         maxWidth: 300,

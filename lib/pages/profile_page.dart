@@ -18,7 +18,7 @@ class ProfilePage extends StatelessWidget {
         children: <Widget>[
           Container(
             padding: const EdgeInsets.all(12),
-            color: Colors.white,
+            color: Color(0xFFFEFEFE),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -42,7 +42,7 @@ class ProfilePage extends StatelessWidget {
               "عروضي",
               style: TextStyle(
                 fontSize: 28,
-                color: Colors.white,
+                color: Color(0xFFFEFEFE),
               ),
             ),
           ),

@@ -88,7 +88,7 @@ class _AdminPageState extends State<AdminPage> {
     return DefaultTabController(
       length: viewablePages.length,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFFEFEFE),
         body: Column(
           children: [
             Container(

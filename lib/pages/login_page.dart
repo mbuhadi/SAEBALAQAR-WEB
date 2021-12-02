@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                                             userNameController.text);
                                         if (error != null) {
                                           Get.snackbar("خطأ", error,
-                                              colorText: Colors.white,
+                                              colorText: Color(0xFFFEFEFE),
                                               backgroundColor: Colors.red);
                                         } else {
                                           setState(() {
@@ -249,7 +249,7 @@ validation(value, noOfDigit) {
                             //                           userNameController.text);
                             //                   if (error != null) {
                             //                     Get.snackbar("خطأ", error,
-                            //                         colorText: Colors.white,
+                            //                         colorText: Color(0xFFFEFEFE),
                             //                         backgroundColor:
                             //                             Colors.red);
                             //                   }

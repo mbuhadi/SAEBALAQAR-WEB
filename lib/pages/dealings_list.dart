@@ -37,7 +37,7 @@ class _DealingsListState extends State<DealingsList> {
                 "لا توجد عروض",
                 style: TextStyle(
                   fontSize: 23,
-                  color: Colors.white,
+                  color: Color(0xFFFEFEFE),
                 ),
               ));
             }

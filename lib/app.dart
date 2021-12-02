@@ -47,10 +47,10 @@ class MyApp extends StatelessWidget {
         // scaffoldBackgroundColor: const Color(0xFFE6F2FC),
         scaffoldBackgroundColor: const Color(0xFF01062e),
         textButtonTheme: TextButtonThemeData(
-            style: TextButton.styleFrom(primary: Colors.white)),
+            style: TextButton.styleFrom(primary: Color(0xFFFEFEFE))),
       ),
 
-      // primaryColor: Colors.white,
+      // primaryColor: Color(0xFFFEFEFE),
 
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
         var adminUser = Get.find<AdminController>().adminUser;
         AppBar mobileAppBarOne = AppBar(
             elevation: 1,
-            backgroundColor: Colors.white,
+            backgroundColor: const Color(0xFFFEFEFE),
             leadingWidth: 200,
             leading: IconButton(
               icon: const Icon(Icons.menu,
@@ -539,7 +539,7 @@ class MyApp extends StatelessWidget {
         // AppBar DesktopNavbar = AppBar(
         //   iconTheme: const IconThemeData(color: Color(0xFF040036)),
         //   elevation: 1,
-        //   backgroundColor: Colors.white,
+        //   backgroundColor: Color(0xFFFEFEFE),
         //   leadingWidth: 300,
         //   leading: SizedBox(
         //     child: Image.asset('images/Logo2.png'),

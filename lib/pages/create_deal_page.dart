@@ -133,13 +133,13 @@ class _CreateDealPageState extends State<CreateDealPage> {
 
                                   if (error != null) {
                                     Get.snackbar("Error", error,
-                                        colorText: Colors.white,
+                                        colorText: Color(0xFFFEFEFE),
                                         backgroundColor: Colors.red);
                                   } else {
                                     Get.find<AuthController>().loadProfile();
                                     description.clear();
                                     Get.snackbar("Success", "Deal Created!",
-                                        colorText: Colors.white,
+                                        colorText: Color(0xFFFEFEFE),
                                         backgroundColor: Colors.green);
 
                                     setState(() {

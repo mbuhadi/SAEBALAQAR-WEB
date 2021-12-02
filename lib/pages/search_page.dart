@@ -13,7 +13,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFFEFEFE),
       body: Align(
         alignment: Alignment.centerLeft,
         child: Row(

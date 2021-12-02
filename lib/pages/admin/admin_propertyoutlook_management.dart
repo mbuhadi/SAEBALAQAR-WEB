@@ -120,7 +120,7 @@ class _AdminPropertyTypeManagementState
                                           Navigator.pop(context);
                                           Get.snackbar("Success",
                                               "Dealer has been deleted",
-                                              colorText: Colors.white,
+                                              colorText: Color(0xFFFEFEFE),
                                               backgroundColor: Colors.green);
 
                                           lookup.removeOutlook(e.id);
@@ -128,7 +128,7 @@ class _AdminPropertyTypeManagementState
                                           Navigator.pop(context);
                                           Get.snackbar("Error",
                                               utf8.decode(res.bodyBytes),
-                                              colorText: Colors.white,
+                                              colorText: Color(0xFFFEFEFE),
                                               backgroundColor: Colors.red);
                                         }
                                       },

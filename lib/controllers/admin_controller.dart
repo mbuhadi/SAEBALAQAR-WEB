@@ -81,7 +81,7 @@ class AdminController extends GetxController {
 
     if (response.statusCode != HttpStatus.created) {
       Get.snackbar("Error", response.body,
-          colorText: Colors.white, backgroundColor: Colors.green);
+          colorText: Color(0xFFFEFEFE), backgroundColor: Colors.green);
       return null;
     }
     var offices = jsonDecode(response.body) as List<dynamic>;

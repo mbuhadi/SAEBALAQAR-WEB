@@ -27,13 +27,13 @@ class LandingPage extends StatelessWidget {
             ],
           ),
           height: 400.0,
-          color: Colors.white,
+          color: Color(0xFFFEFEFE),
           width: double.infinity,
         ),
         Expanded(
           child: Container(
             width: double.infinity,
-            color: Colors.white,
+            color: Color(0xFFFEFEFE),
             child: FittedBox(
               child: Image.asset('images/artcity4.jpg'),
               fit: BoxFit.fitWidth,
@@ -54,13 +54,13 @@ class LandingPage extends StatelessWidget {
 //         children: [
 //           Container(
 //             height: 300.0,
-//             color: Colors.white,
+//             color: Color(0xFFFEFEFE),
 //             width: double.infinity,
 //           ),
 //           Container(
 //             width: double.infinity,
 //             // height: 380.0,
-//             color: Colors.white,
+//             color: Color(0xFFFEFEFE),
 //             child: FittedBox(
 //               child: Image.asset('images/artlandscape.png'),
 //               fit: BoxFit.fill,
