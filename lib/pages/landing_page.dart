@@ -35,7 +35,7 @@ class LandingPage extends StatelessWidget {
             width: double.infinity,
             color: Colors.white,
             child: FittedBox(
-              child: Image.asset('images/artcity_update.jpg'),
+              child: Image.asset('images/artcity3.jpg'),
               fit: BoxFit.fitWidth,
             ),
           ),
