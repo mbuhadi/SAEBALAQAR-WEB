@@ -4,7 +4,6 @@ import 'app_config.dart';
 export 'app_config.dart';
 import 'package:get/get.dart';
 import 'app.dart';
-import 'controllers/deal_controller.dart';
 import 'controllers/auth_controller.dart';
 import 'controllers/lookup_controller.dart';
 import 'controllers/office_controller.dart';
@@ -33,7 +32,7 @@ void startApp(AppConfig config) {
   if (config.acessToken != null) {
     window.localStorage['token'] = config.acessToken!;
   }
-  Get.put<DealController>(DealController());
+
   Get.put<LookupController>(LookupController());
   Get.put<AuthController>(AuthController());
   Get.put<OfficeController>(OfficeController());
@@ -42,33 +41,4 @@ void startApp(AppConfig config) {
   MyApp.config = config;
   runApp(MyApp(config));
   // runApp(TestApp(config));
-}
-
-class TestApp extends StatelessWidget {
-  final GlobalKey<NavigatorState> nagivator = GlobalKey();
-  static late AppConfig config;
-  // const TestApp({Key? key}) : super(key: key);
-  TestApp(AppConfig config) {
-    TestApp.config = config;
-  }
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-        initialRoute: config.initRoute ?? "/",
-        routes: {
-          // "/": (_) => const DealsPage(),
-          "/": (_) => DealingsList(
-                source: SaebAPI.deals(),
-                editable: false,
-              ),
-        },
-        builder: (_, child) {
-          return MaterialApp(
-            home: Scaffold(
-              drawer: const Material(child: Drawer()),
-              appBar: AppBar(),
-            ),
-          );
-        });
-  }
 }

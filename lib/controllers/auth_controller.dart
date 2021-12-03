@@ -56,7 +56,7 @@ class AuthController extends GetxController {
     }
     await loadProfile();
     await Get.find<LookupController>().load();
-    await Get.find<OfficeController>().load();
+    // await Get.find<OfficeController>().load();
     await Get.find<AdminController>().load();
   }
 }

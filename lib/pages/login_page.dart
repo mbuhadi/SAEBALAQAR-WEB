@@ -160,17 +160,17 @@ class _LoginPageState extends State<LoginPage> {
                                                 passwordController.text);
                                         print(verification);
                                         if (verification == null) {
-                                          Navigator.of(context).pop();
+                                          // Navigator.of(context).pop();
                                           Navigator.pushReplacementNamed(
                                               context, '/profile');
-                                          const AlertDialog(
-                                              title: Text('Login Successful!'));
+                                          // const AlertDialog(
+                                          //     title: Text('Login Successful!'));
                                         } else {
                                           print('error');
                                         }
                                       } finally {
                                         setState(() {
-                                          isLoading = false;
+                                          if (mounted) isLoading = false;
                                         });
                                       }
                                     }

@@ -8,7 +8,6 @@ import 'controllers/admin_controller.dart';
 import 'controllers/auth_controller.dart';
 import 'controllers/office_controller.dart';
 import 'pages/dealings_list.dart';
-import 'pages/deals_page.dart';
 import 'pages/login_page.dart';
 import 'pages/offer_page.dart';
 import 'pages/profile_page.dart';
