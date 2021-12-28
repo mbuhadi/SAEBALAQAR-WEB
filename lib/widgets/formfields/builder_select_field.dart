@@ -51,8 +51,8 @@ class _SelectFormField extends State<BuilderSelectFieldWidget> {
           border: UnderlineInputBorder(
               borderSide: BorderSide(width: 2, color: Colors.grey)),
           enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                  width: 2, color: Get.textTheme!.headline6!.color!)),
+              borderSide:
+                  BorderSide(width: 2, color: Get.textTheme.headline6!.color!)),
           errorBorder: UnderlineInputBorder(
               borderSide: BorderSide(width: 2, color: Colors.red)),
           disabledBorder: UnderlineInputBorder(
@@ -66,7 +66,7 @@ class _SelectFormField extends State<BuilderSelectFieldWidget> {
             isExpanded: true,
             isDense: true,
             value: widget.value,
-            iconEnabledColor: Get.textTheme!.headline6!.color!,
+            iconEnabledColor: Get.textTheme.headline6!.color!,
             onChanged: (v) => widget.setValue(v),
             items: this
                 .widget

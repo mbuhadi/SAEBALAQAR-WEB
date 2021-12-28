@@ -24,19 +24,25 @@ class SaebAPI {
   }
 
   static Future<String?> verifyOtp(String phone, String otp) async {
+    print("print3: verify func pre-verify");
     var res = await Http().post("/auth/verify/",
         noAuth: true, body: jsonEncode({"phone": phone, "otp": otp}));
-
+    print("print4: verify func post-verify");
     if (res.statusCode == 201) {
-      await _processAuthorization(jsonDecode(res.body)['access']);
+      print("print5: verify func pre-processAuth");
+      await _processAuthorization(
+          jsonDecode(utf8.decode(res.bodyBytes))['access']);
+      print("print6: verify func post-processAuth");
       return null;
     } else {
-      return res.body;
+      return utf8.decode(res.bodyBytes);
     }
   }
 
   static Future<void> _processAuthorization(String token) async {
+    print("print7: _processAuth func pre-login");
     await Get.find<AuthController>().login(token);
+    print("print8: _processAuth func post-login");
   }
 
   static Future<Iterable<DealModel>> deals() async {
@@ -99,6 +105,40 @@ class SaebAPI {
     return res.body;
   }
 
+  static Future<Iterable<PropertyTypeModel>> loadTypesForSearch() async {
+    var res = await http
+        .get(Uri.parse('https://saebbackend.herokuapp.com/api/deals/types'));
+    var body = jsonDecode(utf8.decode(res.bodyBytes));
+    // print(body);
+    var results = body as List<dynamic>;
+    // print(results);
+    try {
+      var l = results.map((d) => PropertyTypeModel.fromMap(d)).toList();
+      return l;
+    } catch (e, st) {
+      print(e);
+      print(st);
+      rethrow;
+    }
+  }
+
+  static Future<Iterable<PropertyAreaModel>> loadAreasForSearch() async {
+    var res = await http
+        .get(Uri.parse('https://saebbackend.herokuapp.com/api/deals/areas'));
+    var body = jsonDecode(utf8.decode(res.bodyBytes));
+    // print(body);
+    var results = body as List<dynamic>;
+    // print(results);
+    try {
+      var l = results.map((d) => PropertyAreaModel.fromMap(d)).toList();
+      return l;
+    } catch (e, st) {
+      print(e);
+      print(st);
+      rethrow;
+    }
+  }
+
   static Future<Iterable<PropertyTypeModel>> dealTypes() async {
     var res = await Http().get("/deals/types");
     var body = jsonDecode(utf8.decode(res.bodyBytes)) as List<dynamic>;
@@ -106,13 +146,13 @@ class SaebAPI {
   }
 
   static Future<Iterable<PropertyAreaModel>> dealAreas() async {
-    var res = await Http().get("/deals/area");
+    var res = await Http().get("/deals/areas");
     var body = jsonDecode(utf8.decode(res.bodyBytes)) as List<dynamic>;
     return body.map((d) => PropertyAreaModel.fromMap(d)).toList();
   }
 
   static Future<Iterable<PropertyOutlookModel>> outlooks() async {
-    var res = await Http().get("/deals/outlook");
+    var res = await Http().get("/deals/outlooks");
     var body = jsonDecode(utf8.decode(res.bodyBytes)) as List<dynamic>;
     return body.map((d) => PropertyOutlookModel.fromMap(d)).toList();
   }

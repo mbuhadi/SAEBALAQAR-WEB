@@ -1,66 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import '../controllers/lookup_controller.dart';
-import '../services/saeb_api.dart';
 
-class SearchPage extends StatelessWidget {
-  SearchPage({Key? key}) : super(key: key);
-  List dealtypeslist = [];
-  // List dealoutlooks = Get.find<LookupController>().loadOutlooks();
-  // List dealareas = Get.find<LookupController>().loadAreas();
+class FilterBarOne extends StatefulWidget {
+  FilterBarOne({Key? key}) : super(key: key);
+  @override
+  _FilterBarOneState createState() => _FilterBarOneState();
+}
 
+class _FilterBarOneState extends State<FilterBarOne> {
+  List itemsInBarOne = [];
+  var items = ['A', 'B', 'C', 'D'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFEFEFE),
-      body: Align(
-        alignment: Alignment.centerLeft,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
           children: [
-            Container(
-              width: 200,
-              child: ListWheelScrollView(
-                itemExtent: 40,
-                children: Get.find<LookupController>()
-                    .dealTypes
-                    .map((dealType) => DropdownMenuItem<int>(
-                          value: dealType.id,
-                          child: Text(dealType.nameAr),
-                        ))
-                    .toList(),
-                useMagnifier: true,
-                magnification: 1.5,
-                diameterRatio: 0.5,
-                perspective: 0.005,
-                physics: const FixedExtentScrollPhysics(),
-              ),
+            DropdownButton<String>(
+              hint: Text("TestTest"),
+              icon: const Icon(Icons.arrow_downward),
+              items: items.map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (item) => setState(() {
+                itemsInBarOne.add(item);
+                items.remove(item);
+              }),
             ),
-            Container(
-              width: 200,
-              child: ListWheelScrollView(
-                itemExtent: 40,
-                children: [],
-                useMagnifier: true,
-                magnification: 1.5,
-                diameterRatio: 0.5,
-                perspective: 0.005,
-                physics: const FixedExtentScrollPhysics(),
-              ),
-            ),
-            Container(
-              width: 200,
-              child: ListWheelScrollView(
-                itemExtent: 40,
-                children: [],
-                useMagnifier: true,
-                magnification: 1.5,
-                diameterRatio: 0.5,
-                perspective: 0.005,
-                physics: const FixedExtentScrollPhysics(),
-              ),
-            )
+            for (var i in itemsInBarOne)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(i),
+                  TextButton(
+                      onPressed: () => setState(() {
+                            itemsInBarOne.remove(i);
+                            items.add(i);
+                          }),
+                      child: const Text("REMOVE",
+                          style: TextStyle(color: Colors.black)))
+                ],
+              )
           ],
         ),
       ),

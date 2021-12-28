@@ -97,7 +97,7 @@ class _AdminDealManagementState extends State<AdminDealManagement> {
                                               label: Text("Yes"),
                                               style: ElevatedButton.styleFrom(
                                                   primary:
-                                                      Get.theme!.errorColor),
+                                                      Get.theme.errorColor),
                                             ),
                                           ],
                                         ),

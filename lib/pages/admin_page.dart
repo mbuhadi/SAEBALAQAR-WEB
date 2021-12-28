@@ -9,6 +9,7 @@ import 'admin/admin_office_management.dart';
 import 'admin/admin_propertyarea_management.dart';
 import 'admin/admin_propertyoutlook_management.dart';
 import 'admin/admin_propertytype_management.dart';
+import '../widgets/colors/colors.dart';
 
 class AdminPage extends StatefulWidget {
   const AdminPage({Key? key}) : super(key: key);
@@ -88,7 +89,7 @@ class _AdminPageState extends State<AdminPage> {
     return DefaultTabController(
       length: viewablePages.length,
       child: Scaffold(
-        backgroundColor: Color(0xFFFEFEFE),
+        backgroundColor: colorC,
         body: Column(
           children: [
             Container(

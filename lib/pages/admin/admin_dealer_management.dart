@@ -147,7 +147,7 @@ class _AdminDealerManagementState extends State<AdminDealerManagement> {
                                           icon: Icon(Icons.delete),
                                           label: Text("Yes"),
                                           style: ElevatedButton.styleFrom(
-                                              primary: Get.theme!.errorColor),
+                                              primary: Get.theme.errorColor),
                                         ),
                                       ],
                                     ),

@@ -135,7 +135,7 @@ class _AdminPropertyTypeManagementState
                                       icon: Icon(Icons.delete),
                                       label: Text("Yes"),
                                       style: ElevatedButton.styleFrom(
-                                          primary: Get.theme!.errorColor),
+                                          primary: Get.theme.errorColor),
                                     ),
                                   ],
                                 ),

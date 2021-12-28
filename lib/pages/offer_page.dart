@@ -48,7 +48,7 @@ class _OfferPageState extends State<OfferPage> {
                   children: [
                     Text(
                       offer.name,
-                      style: Get.textTheme!.headline4,
+                      style: Get.textTheme.headline4,
                     ),
                     Text("الرصيد ${offer.credit}"),
                     const SizedBox(),
@@ -96,8 +96,8 @@ class _OfferPageState extends State<OfferPage> {
                                               child: Text(
                                                 'إلغاء',
                                                 style: TextStyle(
-                                                    color: Get
-                                                        .theme!.primaryColor),
+                                                    color:
+                                                        Get.theme.primaryColor),
                                               ),
                                             )
                                           ],

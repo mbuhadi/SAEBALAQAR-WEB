@@ -171,7 +171,7 @@ class DealCard extends StatelessWidget {
   //                 Text(
   //                     "${deal.property_outlook.name_en} - ${deal.property_area.name_en}",
   //                     style: Theme.of(context).textTheme.headline6),
-  //                 Expanded(
+  //                 (
   //                     child: Container(
   //                   decoration: BoxDecoration(
   //                       color: Colors.blue[50],

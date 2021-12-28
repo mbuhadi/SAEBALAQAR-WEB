@@ -90,7 +90,7 @@ class _DateFormField extends State<BuilderCounterFieldWidget> {
                   borderSide: BorderSide(width: 2, color: Colors.grey)),
               enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                      width: 2, color: Get.textTheme!.headline6!.color!)),
+                      width: 2, color: Get.textTheme.headline6!.color!)),
               errorBorder: UnderlineInputBorder(
                   borderSide: BorderSide(width: 2, color: Colors.red)),
               disabledBorder: UnderlineInputBorder(

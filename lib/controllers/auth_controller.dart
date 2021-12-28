@@ -48,15 +48,14 @@ class AuthController extends GetxController {
   Future<void> login(String token) async {
     isLoggedIn.value = true;
     window.localStorage['token'] = token;
-
     var response = await Http().get('/dealer/');
     if (response.statusCode == HttpStatus.ok) {
       dealer.value = DealerModel.fromJson(response.body);
       await loadOffers();
     }
-    await loadProfile();
-    await Get.find<LookupController>().load();
-    // await Get.find<OfficeController>().load();
+    // await loadProfile();
     await Get.find<AdminController>().load();
+    await Get.find<LookupController>().load();
+    await Get.find<OfficeController>().load();
   }
 }

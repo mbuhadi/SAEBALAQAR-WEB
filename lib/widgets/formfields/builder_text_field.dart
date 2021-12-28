@@ -43,7 +43,7 @@ class _TextFormField extends State<BuilderTextFieldWidget> {
             borderSide: BorderSide(width: 2, color: Colors.grey)),
         enabledBorder: UnderlineInputBorder(
             borderSide:
-                BorderSide(width: 2, color: Get.textTheme!.headline6!.color!)),
+                BorderSide(width: 2, color: Get.textTheme.headline6!.color!)),
         errorBorder: UnderlineInputBorder(
             borderSide: BorderSide(width: 2, color: Colors.red)),
         disabledBorder: UnderlineInputBorder(

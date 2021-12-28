@@ -4,27 +4,30 @@ import '../models/propertyarea_model.dart';
 import '../models/propertyoutlook_model.dart';
 import '../services/saeb_api.dart';
 
-class LookupController extends GetxController {
+class LookupController extends GetxController with StateMixin {
   RxList<PropertyTypeModel> dealTypes = <PropertyTypeModel>[].obs;
   RxList<PropertyAreaModel> dealAreas = <PropertyAreaModel>[].obs;
   RxList<PropertyOutlookModel> dealOutlooks = <PropertyOutlookModel>[].obs;
 
   Future<void> load() async {
     await loadTypes();
-    await loadAreas();
     await loadOutlooks();
+    await loadAreas();
   }
 
   Future<void> loadTypes() async {
     dealTypes.value = (await SaebAPI.dealTypes()).toList();
-  }
-
-  Future<void> loadAreas() async {
-    dealAreas.value = (await SaebAPI.dealAreas()).toList();
+    print("loadedTypes");
   }
 
   Future<void> loadOutlooks() async {
     dealOutlooks.value = (await SaebAPI.outlooks()).toList();
+    print("loadedOutlooks");
+  }
+
+  Future<void> loadAreas() async {
+    dealAreas.value = (await SaebAPI.dealAreas()).toList();
+    print("loadedAreas");
   }
 
   void addType(PropertyTypeModel type) {

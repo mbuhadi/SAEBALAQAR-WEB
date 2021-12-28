@@ -84,7 +84,7 @@ class FormBuilderState extends State<FormBuilder> {
                 style: Theme.of(context)
                     .textTheme
                     .headline6!
-                    .copyWith(color: Get.theme!.errorColor),
+                    .copyWith(color: Get.theme.errorColor),
               ),
             ...widget.fields.map((field) {
               Widget widget = Container();

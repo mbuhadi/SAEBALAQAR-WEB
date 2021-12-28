@@ -7,7 +7,9 @@ class OfficeController extends GetxController {
   Rxn<OfficeProfileModel> office = Rxn<OfficeProfileModel>();
 
   Future<void> load() async {
+    print('loading office val');
     office.value = await SaebAPI.getOfficeForOwner();
+    print('loaded office val');
   }
 
   void addDealer(DealerSummaryModel dealer) {

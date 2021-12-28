@@ -83,6 +83,8 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                         TextFormField(
                             enabled: !verifyingOTP,
+                            onFieldSubmitted: (s) =>
+                                FocusScope.of(context).requestFocus(),
                             controller: userNameController,
                             decoration: const InputDecoration(
                               border: UnderlineInputBorder(),
@@ -140,7 +142,8 @@ class _LoginPageState extends State<LoginPage> {
                                             userNameController.text);
                                         if (error != null) {
                                           Get.snackbar("خطأ", error,
-                                              colorText: Color(0xFFFEFEFE),
+                                              colorText:
+                                                  const Color(0xFFFEFEFE),
                                               backgroundColor: Colors.red);
                                         } else {
                                           setState(() {
@@ -158,9 +161,8 @@ class _LoginPageState extends State<LoginPage> {
                                             await SaebAPI.verifyOtp(
                                                 userNameController.text,
                                                 passwordController.text);
-                                        print(verification);
                                         if (verification == null) {
-                                          // Navigator.of(context).pop();
+                                          Navigator.of(context).pop();
                                           Navigator.pushReplacementNamed(
                                               context, '/profile');
                                           // const AlertDialog(

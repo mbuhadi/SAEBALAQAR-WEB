@@ -1,4 +1,5 @@
 // ignore_for_file: file_names
+import 'package:daymanager3/models/propertytype_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,10 +11,10 @@ import 'controllers/office_controller.dart';
 import 'pages/dealings_list.dart';
 import 'pages/login_page.dart';
 import 'pages/offer_page.dart';
-import 'pages/profile_page.dart';
+import 'pages/profile_page.dart' deferred as dealer;
 import 'services/saeb_api.dart';
-import 'pages/create_deal_page.dart';
-import 'pages/office_page.dart';
+import 'pages/create_deal_page.dart' deferred as create;
+import 'pages/office_page.dart' deferred as office;
 import 'pages/payment_result_page.dart';
 import 'saeb_icons.dart';
 import 'pages/landing_page.dart';
@@ -21,7 +22,15 @@ import 'widgets/navbar/onhover.dart';
 import 'pages/about_us.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
 import 'pages/search_page.dart';
-import 'pages/admin_page.dart';
+import 'pages/search_page_2.dart';
+import 'pages/admin_page.dart' deferred as admin;
+import 'pages/search_page_3.dart';
+import 'pages/search_page_4.dart';
+import 'widgets/colors/colors.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'controllers/lookup_controller.dart';
+import 'pages/login_page_two.dart';
 // ---------------------------------------------------------
 // STOP HERE STOP HERE
 // ---------------------------------------------------------
@@ -33,6 +42,11 @@ class MyApp extends StatelessWidget {
   MyApp(AppConfig config) {
     MyApp.config = config;
   }
+  Future<void> getTypes() async {
+    await Get.find<LookupController>().load();
+    // print(Get.find<LookupController>().dealTypes);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -42,9 +56,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "Almarai",
         // backgroundColor: const Color(0xFFE6F2FC),
-        backgroundColor: const Color(0xFF01062e),
+        backgroundColor: colorA,
         // scaffoldBackgroundColor: const Color(0xFFE6F2FC),
-        scaffoldBackgroundColor: const Color(0xFF01062e),
+        scaffoldBackgroundColor: colorA,
         textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(primary: Color(0xFFFEFEFE))),
       ),
@@ -70,16 +84,40 @@ class MyApp extends StatelessWidget {
               editable: false,
             ),
         "/login": (_) => const LoginPage(),
-        '/profile': (_) => const ProfilePage(),
+        '/profile': (_) => FutureBuilder(
+            future: dealer.loadLibrary(),
+            builder: (_, __) => (__.connectionState != ConnectionState.done)
+                ? Center(child: CircularProgressIndicator())
+                : dealer.ProfilePage()),
         '/offers': (_) => const OfferPage(),
-        '/createdeal': (_) => const CreateDealPage(),
-        '/office': (_) => const OfficePage(),
+        '/office': (_) => FutureBuilder(
+            future: office.loadLibrary(),
+            builder: (_, __) => (__.connectionState != ConnectionState.done)
+                ? Center(child: CircularProgressIndicator())
+                : office.OfficePage()),
         '/success': (_) => PaymentResultPage(),
-        '/': (_) => LandingPage(),
+        '/': (_) => LandingPage(
+              types: SaebAPI.loadTypesForSearch(),
+              areas: SaebAPI.loadAreasForSearch(),
+            ),
         '/about': (_) => const AboutUs(),
-        // '/search': (_) => const SearchPage(),
-        '/admin': (_) => const AdminPage(),
-        '/create': (_) => const CreateDealPage(),
+        '/search': (_) => FilterBarOne(),
+        '/logintwo': (_) => LoginPageTwo(),
+        '/search3': (_) => CustomDropDownTwo(
+              types: SaebAPI.loadTypesForSearch(),
+              areas: SaebAPI.loadAreasForSearch(),
+            ),
+        '/search4': (_) => TestDropDown(source: SaebAPI.loadTypesForSearch()),
+        '/admin': (_) => FutureBuilder(
+            future: admin.loadLibrary(),
+            builder: (_, __) => (__.connectionState != ConnectionState.done)
+                ? Center(child: CircularProgressIndicator())
+                : admin.AdminPage()),
+        '/create': (_) => FutureBuilder(
+            future: create.loadLibrary(),
+            builder: (_, __) => (__.connectionState != ConnectionState.done)
+                ? Center(child: CircularProgressIndicator())
+                : create.CreateDealPage()),
       },
       navigatorKey: nagivator,
       builder: (_, child) {
@@ -113,8 +151,8 @@ class MyApp extends StatelessWidget {
               ),
               const Spacer(flex: 1),
             ],
-            iconTheme: const IconThemeData(
-              color: Color(0xff01062e),
+            iconTheme: IconThemeData(
+              color: colorA,
             ));
         return Overlay(initialEntries: [
           OverlayEntry(
@@ -140,9 +178,8 @@ class MyApp extends StatelessWidget {
                             ),
                           ),
                           OnHoverButton(builder: (isHovered) {
-                            final colorOfButton = isHovered
-                                ? Colors.teal[600]
-                                : const Color(0xff01062e);
+                            final colorOfButton =
+                                isHovered ? Colors.teal[600] : colorA;
                             final colorOfBackground = isHovered
                                 ? Colors.grey[200]
                                 : const Color(0x00ffffff);
@@ -179,9 +216,8 @@ class MyApp extends StatelessWidget {
                                   width: 0,
                                 )
                               : OnHoverButton(builder: (isHovered) {
-                                  final colorOfButton = isHovered
-                                      ? Colors.teal[600]
-                                      : const Color(0xff01062e);
+                                  final colorOfButton =
+                                      isHovered ? Colors.teal[600] : colorA;
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[100]
                                       : const Color(0x00ffffff);
@@ -223,9 +259,8 @@ class MyApp extends StatelessWidget {
                                   width: 0,
                                 )
                               : OnHoverButton(builder: (isHovered) {
-                                  final colorOfButton = isHovered
-                                      ? Colors.teal[600]
-                                      : const Color(0xff01062e);
+                                  final colorOfButton =
+                                      isHovered ? Colors.teal[600] : colorA;
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[200]
                                       : const Color(0x00ffffff);
@@ -314,9 +349,8 @@ class MyApp extends StatelessWidget {
                                   width: 0,
                                 )
                               : OnHoverButton(builder: (isHovered) {
-                                  final colorOfButton = isHovered
-                                      ? Colors.teal[600]
-                                      : const Color(0xff01062e);
+                                  final colorOfButton =
+                                      isHovered ? Colors.teal[600] : colorA;
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[200]
                                       : const Color(0x00ffffff);
@@ -352,9 +386,8 @@ class MyApp extends StatelessWidget {
                                   );
                                 })),
                           OnHoverButton(builder: (isHovered) {
-                            final colorOfButton = isHovered
-                                ? Colors.teal[600]
-                                : const Color(0xff01062e);
+                            final colorOfButton =
+                                isHovered ? Colors.teal[600] : colorA;
                             final colorOfBackground = isHovered
                                 ? Colors.grey[200]
                                 : const Color(0x00ffffff);
@@ -386,9 +419,8 @@ class MyApp extends StatelessWidget {
                           }),
                           Obx(() => loggedIn.value == false
                               ? OnHoverButton(builder: (isHovered) {
-                                  final colorOfButton = isHovered
-                                      ? Colors.teal[600]
-                                      : const Color(0xff01062e);
+                                  final colorOfButton =
+                                      isHovered ? Colors.teal[600] : colorA;
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[200]
                                       : const Color(0x00ffffff);
@@ -425,9 +457,8 @@ class MyApp extends StatelessWidget {
                                   );
                                 })
                               : OnHoverButton(builder: (isHovered) {
-                                  final colorOfButton = isHovered
-                                      ? Colors.teal[600]
-                                      : const Color(0xff01062e);
+                                  final colorOfButton =
+                                      isHovered ? Colors.teal[600] : colorA;
                                   final colorOfBackground = isHovered
                                       ? Colors.grey[200]
                                       : const Color(0x00ffffff);
@@ -499,7 +530,7 @@ class MyApp extends StatelessWidget {
 //                                 child: const Text(
 //                                   "سيب العقار",
 //                                   style: TextStyle(
-//                                       color: Color(0xff01062e), fontSize: 20),
+//                                       color: colorA, fontSize: 20),
 //                                 ),
 //                                 onPressed: () {
 //                                   nagivator.currentState!
@@ -517,7 +548,7 @@ class MyApp extends StatelessWidget {
 
 // OnHoverButton(builder: (isHovered) {
 //               final colorOfButton =
-//                   isHovered ? Colors.teal[600] : Color(0xff01062e);
+//                   isHovered ? Colors.teal[600] : colorA;
 //               return TextButton(
 //                 onPressed: () =>
 //                     nagivator.currentState!.pushReplacementNamed("/"),
@@ -548,7 +579,7 @@ class MyApp extends StatelessWidget {
         //     const Spacer(flex: 15),
         //     OnHoverButton(builder: (isHovered) {
         //       final colorOfButton =
-        //           isHovered ? Colors.teal[600] : const Color(0xff01062e);
+        //           isHovered ? Colors.teal[600] : const colorA;
         //       return TextButton(
         //         onPressed: () =>
         //             nagivator.currentState!.pushReplacementNamed("/"),
@@ -563,7 +594,7 @@ class MyApp extends StatelessWidget {
         //         ? const SizedBox(width: 0)
         //         : OnHoverButton(builder: (isHovered) {
         //             final colorOfButton =
-        //                 isHovered ? Colors.teal[600] : const Color(0xff01062e);
+        //                 isHovered ? Colors.teal[600] : const colorA;
         //             return TextButton(
         //               onPressed: () => nagivator.currentState!
         //                   .pushReplacementNamed("/admin"),
@@ -578,7 +609,7 @@ class MyApp extends StatelessWidget {
         //         ? const SizedBox(width: 0)
         //         : OnHoverButton(builder: (isHovered) {
         //             final colorOfButton =
-        //                 isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //                 isHovered ? Colors.teal[600] : colorA;
         //             return TextButton(
         //               onPressed: () => nagivator.currentState!
         //                   .pushReplacementNamed("/create"),
@@ -593,7 +624,7 @@ class MyApp extends StatelessWidget {
         //         ? Container()
         //         : OnHoverButton(builder: (isHovered) {
         //             final colorOfButton =
-        //                 isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //                 isHovered ? Colors.teal[600] : colorA;
         //             return TextButton(
         //               onPressed: () => nagivator.currentState!
         //                   .pushReplacementNamed("/offers"),
@@ -608,7 +639,7 @@ class MyApp extends StatelessWidget {
         //         ? const SizedBox(width: 0)
         //         : OnHoverButton(builder: (isHovered) {
         //             final colorOfButton =
-        //                 isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //                 isHovered ? Colors.teal[600] : colorA;
         //             return TextButton(
         //               onPressed: () => nagivator.currentState!
         //                   .pushReplacementNamed("/profile"),
@@ -621,7 +652,7 @@ class MyApp extends StatelessWidget {
         //     const Spacer(flex: 1),
         //     OnHoverButton(builder: (isHovered) {
         //       final colorOfButton =
-        //           isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //           isHovered ? Colors.teal[600] : colorA;
         //       return TextButton(
         //           onPressed: () {
         //             nagivator.currentState!.pushReplacementNamed("/about");
@@ -635,7 +666,7 @@ class MyApp extends StatelessWidget {
         //     Obx(() => loggedIn.value == false
         //         ? OnHoverButton(builder: (isHovered) {
         //             final colorOfButton =
-        //                 isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //                 isHovered ? Colors.teal[600] : colorA;
         //             return TextButton(
         //               onPressed: () => nagivator.currentState!
         //                   .pushReplacementNamed("/login"),
@@ -647,7 +678,7 @@ class MyApp extends StatelessWidget {
         //           })
         //         : OnHoverButton(builder: (isHovered) {
         //             final colorOfButton =
-        //                 isHovered ? Colors.teal[600] : Color(0xff01062e);
+        //                 isHovered ? Colors.teal[600] : colorA;
         //             return TextButton(
         //               onPressed: () {
         //                 nagivator.currentState!.pushReplacementNamed("/login");

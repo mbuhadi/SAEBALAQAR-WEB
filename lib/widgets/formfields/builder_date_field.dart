@@ -52,15 +52,15 @@ class _DateFormField extends State<BuilderDateFieldWidget> {
       },
       child: InputDecorator(
         decoration: InputDecoration(
-          icon: Icon(Icons.calendar_today),
-          suffixIcon: Icon(Icons.arrow_drop_down),
+          icon: const Icon(Icons.calendar_today),
+          suffixIcon: const Icon(Icons.arrow_drop_down),
           isDense: true,
-          border: UnderlineInputBorder(
+          border: const UnderlineInputBorder(
               borderSide: BorderSide(width: 2, color: Colors.grey)),
           enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                  width: 2, color: Get.textTheme!.headline6!.color!)),
-          errorBorder: UnderlineInputBorder(
+              borderSide:
+                  BorderSide(width: 2, color: Get.textTheme.headline6!.color!)),
+          errorBorder: const UnderlineInputBorder(
               borderSide: BorderSide(width: 2, color: Colors.red)),
           disabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(width: 2, color: Colors.grey[300]!)),

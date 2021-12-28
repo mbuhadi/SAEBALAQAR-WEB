@@ -1,4 +1,4 @@
-import 'package:daymanager3/services/http.dart';
+import 'services/http.dart';
 import 'package:flutter/material.dart';
 import 'app_config.dart';
 export 'app_config.dart';
