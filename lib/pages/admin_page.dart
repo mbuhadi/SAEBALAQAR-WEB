@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-
 import '../controllers/admin_controller.dart';
 import 'admin/admin_deal_management.dart';
 import 'admin/admin_dealer_management.dart';
@@ -86,7 +85,8 @@ class _AdminPageState extends State<AdminPage> {
         .map((e) => e.key.substring(0, e.key.length - "_VIEW".length))
         .toList();
 
-    return DefaultTabController(
+    return Scaffold(
+        body: DefaultTabController(
       length: viewablePages.length,
       child: Scaffold(
         backgroundColor: colorC,
@@ -94,20 +94,18 @@ class _AdminPageState extends State<AdminPage> {
           children: [
             Container(
               height: 50,
-              child: Expanded(
-                child: TabBar(
-                  tabs: viewablePages
-                      .map((e) => Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 9, 0, 9),
-                            child: Text(
-                              permToPage[e]!.label,
-                              style: TextStyle(
-                                  fontSize: multiplier * unitHeightValue,
-                                  color: Colors.black),
-                            ),
-                          ))
-                      .toList(),
-                ),
+              child: TabBar(
+                tabs: viewablePages
+                    .map((e) => Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 9, 0, 9),
+                          child: Text(
+                            permToPage[e]!.label,
+                            style: TextStyle(
+                                fontSize: multiplier * unitHeightValue,
+                                color: Colors.black),
+                          ),
+                        ))
+                    .toList(),
               ),
             ),
             Expanded(
@@ -124,6 +122,6 @@ class _AdminPageState extends State<AdminPage> {
           ],
         ),
       ),
-    );
+    ));
   }
 }

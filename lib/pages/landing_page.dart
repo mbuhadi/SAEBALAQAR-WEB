@@ -90,7 +90,9 @@ class _LandingPageState extends State<LandingPage> {
                       areas: widget.areas,
                     ),
                     RawMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print(TypesBar.chosenItem);
+                      },
                       elevation: 2.0,
                       fillColor: colorB,
                       child: Icon(

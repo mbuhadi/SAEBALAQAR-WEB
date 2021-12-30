@@ -6,6 +6,7 @@ import '../controllers/office_controller.dart';
 import '../models/dealer_model.dart';
 import 'dealings_list.dart';
 import '../services/Saeb_API.dart';
+import '../widgets/colors/colors.dart';
 
 class OfficePage extends StatelessWidget {
   const OfficePage({Key? key}) : super(key: key);
@@ -48,11 +49,9 @@ class OfficePage extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text(
-                        "Dealers",
-                        textAlign: TextAlign.start,
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
+                      Text("Dealers",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(fontSize: 16, color: colorC)),
                       const SizedBox(
                         width: 16,
                       ),
@@ -137,7 +136,8 @@ class OfficePage extends StatelessWidget {
                                                                     .text);
                                                     Navigator.of(_).pop(result);
                                                   },
-                                                  icon: const Icon(Icons.add),
+                                                  icon: Icon(Icons.add,
+                                                      color: colorC),
                                                   label: Text("Add")),
                                               const SizedBox(
                                                 height: 6,

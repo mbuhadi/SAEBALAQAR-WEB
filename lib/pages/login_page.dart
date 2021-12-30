@@ -157,14 +157,18 @@ class _LoginPageState extends State<LoginPage> {
                                       }
                                     } else {
                                       try {
+                                        print("1");
                                         var verification =
                                             await SaebAPI.verifyOtp(
                                                 userNameController.text,
                                                 passwordController.text);
+                                        print("15");
                                         if (verification == null) {
-                                          Navigator.of(context).pop();
+                                          // Navigator.of(context).pop();
+                                          print("16");
                                           Navigator.pushReplacementNamed(
                                               context, '/profile');
+                                          print("17");
                                           // const AlertDialog(
                                           //     title: Text('Login Successful!'));
                                         } else {

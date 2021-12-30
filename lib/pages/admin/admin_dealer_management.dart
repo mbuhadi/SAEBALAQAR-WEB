@@ -55,104 +55,105 @@ class _AdminDealerManagementState extends State<AdminDealerManagement> {
                         onEdit: !widget.canEdit
                             ? null
                             : () async {
-                                Get.dialog(Center(
-                                  child: Card(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        FormBuilder(
-                                          title: "Edit Dealer",
-                                          fields: [
-                                            BuilderTextField(
-                                              id: "name",
-                                              label: "Dealer name",
-                                              initValue: e.name,
-                                            ),
-                                          ],
-                                          onSubmit: (data) async {
-                                            var body = {};
+                                // print("AdminDealerCard");
+                                // Get.dialog(Center(
+                                //   child: Card(
+                                //     child: Column(
+                                //       mainAxisSize: MainAxisSize.min,
+                                //       children: [
+                                //         FormBuilder(
+                                //           title: "Edit Dealer",
+                                //           fields: [
+                                //             BuilderTextField(
+                                //               id: "name",
+                                //               label: "Dealer name",
+                                //               initValue: e.name,
+                                //             ),
+                                //           ],
+                                //           onSubmit: (data) async {
+                                //             var body = {};
 
-                                            if (data['name'] != null &&
-                                                data['name']!.isNotEmpty &&
-                                                data["name"] != e.name) {
-                                              body['name'] = data['name'];
-                                            } else {
-                                              return "Missing name";
-                                            }
+                                //             if (data['name'] != null &&
+                                //                 data['name']!.isNotEmpty &&
+                                //                 data["name"] != e.name) {
+                                //               body['name'] = data['name'];
+                                //             } else {
+                                //               return "Missing name";
+                                //             }
 
-                                            var res = await Http().patch(
-                                                "/admin/dealers/${e.phone}",
-                                                body: jsonEncode(body));
+                                //             var res = await Http().patch(
+                                //                 "/admin/dealers/${e.phone}",
+                                //                 body: jsonEncode(body));
 
-                                            if (res.statusCode ==
-                                                HttpStatus.ok) {
-                                              Navigator.of(context).pop();
+                                //             if (res.statusCode ==
+                                //                 HttpStatus.ok) {
+                                //               Navigator.of(context).pop();
 
-                                              Get.find<AdminController>()
-                                                  .getDealers()
-                                                  .then((value) => setState(() {
-                                                        isLoading = false;
-                                                        dealers = value;
-                                                      }));
+                                //               Get.find<AdminController>()
+                                //                   .getDealers()
+                                //                   .then((value) => setState(() {
+                                //                         isLoading = false;
+                                //                         dealers = value;
+                                //                       }));
 
-                                              return null;
-                                            } else {
-                                              return utf8.decode(res.bodyBytes);
-                                            }
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ));
+                                //               return null;
+                                //             } else {
+                                //               return utf8.decode(res.bodyBytes);
+                                //             }
+                                //           },
+                                //         ),
+                                //       ],
+                                //     ),
+                                //   ),
+                                // ));
                               },
                         onDelete: !widget.canDelete
                             ? null
                             : () async {
-                                Get.dialog(Center(
-                                  child: Card(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Text(
-                                            'Deleting dealer: ${e.phone} will delete all their deals, and dealers. Are you sure?'),
-                                        ElevatedButton.icon(
-                                          onPressed: () async {
-                                            var res = await Http().delete(
-                                                "/admin/dealers/${e.phone}");
+                                // Get.dialog(Center(
+                                //   child: Card(
+                                //     child: Column(
+                                //       mainAxisSize: MainAxisSize.min,
+                                //       children: [
+                                //         Text(
+                                //             'Deleting dealer: ${e.phone} will delete all their deals, and dealers. Are you sure?'),
+                                //         ElevatedButton.icon(
+                                //           onPressed: () async {
+                                //             var res = await Http().delete(
+                                //                 "/admin/dealers/${e.phone}");
 
-                                            if (res.statusCode ==
-                                                HttpStatus.noContent) {
-                                              Navigator.pop(context);
-                                              Get.snackbar("Success",
-                                                  "Dealer has been deleted",
-                                                  colorText: Color(0xFFFEFEFE),
-                                                  backgroundColor:
-                                                      Colors.green);
+                                //             if (res.statusCode ==
+                                //                 HttpStatus.noContent) {
+                                //               Navigator.pop(context);
+                                //               Get.snackbar("Success",
+                                //                   "Dealer has been deleted",
+                                //                   colorText: Color(0xFFFEFEFE),
+                                //                   backgroundColor:
+                                //                       Colors.green);
 
-                                              setState(() {
-                                                dealers = dealers
-                                                    .where((o) =>
-                                                        o.phone != e.phone)
-                                                    .toList();
-                                              });
-                                            } else {
-                                              Navigator.pop(context);
-                                              Get.snackbar("Error",
-                                                  utf8.decode(res.bodyBytes),
-                                                  colorText: Color(0xFFFEFEFE),
-                                                  backgroundColor: Colors.red);
-                                            }
-                                          },
-                                          icon: Icon(Icons.delete),
-                                          label: Text("Yes"),
-                                          style: ElevatedButton.styleFrom(
-                                              primary: Get.theme.errorColor),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ));
+                                //               setState(() {
+                                //                 dealers = dealers
+                                //                     .where((o) =>
+                                //                         o.phone != e.phone)
+                                //                     .toList();
+                                //               });
+                                //             } else {
+                                //               Navigator.pop(context);
+                                //               Get.snackbar("Error",
+                                //                   utf8.decode(res.bodyBytes),
+                                //                   colorText: Color(0xFFFEFEFE),
+                                //                   backgroundColor: Colors.red);
+                                //             }
+                                //           },
+                                //           icon: Icon(Icons.delete),
+                                //           label: Text("Yes"),
+                                //           style: ElevatedButton.styleFrom(
+                                //               primary: Get.theme.errorColor),
+                                //         ),
+                                //       ],
+                                //     ),
+                                //   ),
+                                // ));
                               },
                       ))
                   .toList(),
@@ -162,62 +163,62 @@ class _AdminDealerManagementState extends State<AdminDealerManagement> {
                 : FloatingActionButton(
                     child: Icon(Icons.add),
                     onPressed: () async {
-                      Get.dialog(Center(
-                        child: Card(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text('Create Dealer'),
-                              FormBuilder(
-                                title: "Create Dealer",
-                                fields: [
-                                  BuilderSelectField(
-                                      id: "office",
-                                      label: "Office",
-                                      items: Get.find<AdminController>()
-                                          .offices
-                                          .map((e) => SelectItem(
-                                                value: e.id.toString(),
-                                                label: e.name,
-                                              ))
-                                          .toList()),
-                                  BuilderTextField(
-                                    id: "phone",
-                                    label: "Phone number",
-                                  ),
-                                  BuilderTextField(
-                                    id: "name",
-                                    label: "Dealer name",
-                                  ),
-                                ],
-                                onSubmit: (data) async {
-                                  var res = await Http().post("/admin/dealers",
-                                      body: jsonEncode({
-                                        "phone": data['phone'],
-                                        "name": data['name'],
-                                        "office": data['office'],
-                                      }));
+                      // Get.dialog(Center(
+                      //   child: Card(
+                      //     child: Column(
+                      //       mainAxisSize: MainAxisSize.min,
+                      //       children: [
+                      //         Text('Create Dealer'),
+                      //         FormBuilder(
+                      //           title: "Create Dealer",
+                      //           fields: [
+                      //             BuilderSelectField(
+                      //                 id: "office",
+                      //                 label: "Office",
+                      //                 items: Get.find<AdminController>()
+                      //                     .offices
+                      //                     .map((e) => SelectItem(
+                      //                           value: e.id.toString(),
+                      //                           label: e.name,
+                      //                         ))
+                      //                     .toList()),
+                      //             BuilderTextField(
+                      //               id: "phone",
+                      //               label: "Phone number",
+                      //             ),
+                      //             BuilderTextField(
+                      //               id: "name",
+                      //               label: "Dealer name",
+                      //             ),
+                      //           ],
+                      //           onSubmit: (data) async {
+                      //             var res = await Http().post("/admin/dealers",
+                      //                 body: jsonEncode({
+                      //                   "phone": data['phone'],
+                      //                   "name": data['name'],
+                      //                   "office": data['office'],
+                      //                 }));
 
-                                  if (res.statusCode == HttpStatus.created) {
-                                    Navigator.of(context).pop();
+                      //             if (res.statusCode == HttpStatus.created) {
+                      //               Navigator.of(context).pop();
 
-                                    Get.find<AdminController>()
-                                        .getDealers()
-                                        .then((value) => setState(() {
-                                              isLoading = false;
-                                              dealers = value;
-                                            }));
+                      //               Get.find<AdminController>()
+                      //                   .getDealers()
+                      //                   .then((value) => setState(() {
+                      //                         isLoading = false;
+                      //                         dealers = value;
+                      //                       }));
 
-                                    return null;
-                                  } else {
-                                    return utf8.decode(res.bodyBytes);
-                                  }
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ));
+                      //               return null;
+                      //             } else {
+                      //               return utf8.decode(res.bodyBytes);
+                      //             }
+                      //           },
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ));
                     },
                   ),
           );

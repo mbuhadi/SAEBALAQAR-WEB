@@ -53,56 +53,58 @@ class _AdminDealManagementState extends State<AdminDealManagement> {
                             onDelete: !widget.canDelete
                                 ? null
                                 : () async {
-                                    Get.dialog(Center(
-                                      child: Card(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Text(
-                                                'Deleting deal: ${e.id} will delete all their deals, and deals. Are you sure?'),
-                                            ElevatedButton.icon(
-                                              onPressed: () async {
-                                                var res = await Http().delete(
-                                                    "/admin/deals/${e.id}");
+                                    // print("AdminDealCard");
 
-                                                if (res.statusCode ==
-                                                    HttpStatus.noContent) {
-                                                  Navigator.pop(context);
-                                                  Get.snackbar("Success",
-                                                      "Dealer has been deleted",
-                                                      colorText:
-                                                          Color(0xFFFEFEFE),
-                                                      backgroundColor:
-                                                          Colors.green);
+                                    // Get.dialog(Center(
+                                    //   child: Card(
+                                    //     child: Column(
+                                    //       mainAxisSize: MainAxisSize.min,
+                                    //       children: [
+                                    //         Text(
+                                    //             'Deleting deal: ${e.id} will delete all their deals, and deals. Are you sure?'),
+                                    //         ElevatedButton.icon(
+                                    //           onPressed: () async {
+                                    //             var res = await Http().delete(
+                                    //                 "/admin/deals/${e.id}");
 
-                                                  setState(() {
-                                                    deals = deals
-                                                        .where(
-                                                            (o) => o.id != e.id)
-                                                        .toList();
-                                                  });
-                                                } else {
-                                                  Navigator.pop(context);
-                                                  Get.snackbar(
-                                                      "Error",
-                                                      utf8.decode(
-                                                          res.bodyBytes),
-                                                      colorText:
-                                                          Color(0xFFFEFEFE),
-                                                      backgroundColor:
-                                                          Colors.red);
-                                                }
-                                              },
-                                              icon: Icon(Icons.delete),
-                                              label: Text("Yes"),
-                                              style: ElevatedButton.styleFrom(
-                                                  primary:
-                                                      Get.theme.errorColor),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ));
+                                    //             if (res.statusCode ==
+                                    //                 HttpStatus.noContent) {
+                                    //               Navigator.pop(context);
+                                    //               Get.snackbar("Success",
+                                    //                   "Dealer has been deleted",
+                                    //                   colorText:
+                                    //                       Color(0xFFFEFEFE),
+                                    //                   backgroundColor:
+                                    //                       Colors.green);
+
+                                    //               setState(() {
+                                    //                 deals = deals
+                                    //                     .where(
+                                    //                         (o) => o.id != e.id)
+                                    //                     .toList();
+                                    //               });
+                                    //             } else {
+                                    //               Navigator.pop(context);
+                                    //               Get.snackbar(
+                                    //                   "Error",
+                                    //                   utf8.decode(
+                                    //                       res.bodyBytes),
+                                    //                   colorText:
+                                    //                       Color(0xFFFEFEFE),
+                                    //                   backgroundColor:
+                                    //                       Colors.red);
+                                    //             }
+                                    //           },
+                                    //           icon: Icon(Icons.delete),
+                                    //           label: Text("Yes"),
+                                    //           style: ElevatedButton.styleFrom(
+                                    //               primary:
+                                    //                   Get.theme.errorColor),
+                                    //         ),
+                                    //       ],
+                                    //     ),
+                                    //   ),
+                                    // ));
                                   },
                           ))
                       .toList(),

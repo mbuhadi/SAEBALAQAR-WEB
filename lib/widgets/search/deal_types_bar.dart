@@ -4,11 +4,9 @@ import '../colors/colors.dart';
 import '../../models/propertytype_model.dart';
 
 class TypesBar extends StatefulWidget {
-  const TypesBar({
-    Key? key,
-    required this.types,
-  }) : super(key: key);
+  TypesBar({Key? key, required this.types}) : super(key: key);
   final Future<Iterable<PropertyTypeModel>> types;
+  static var chosenItem = "House";
 
   @override
   _TypesBarState createState() => _TypesBarState();
@@ -52,6 +50,7 @@ class _TypesBarState extends State<TypesBar> {
                           onTap: () {
                             setState(() {
                               _chosen = _dealTypes.indexOf(dealType);
+                              TypesBar.chosenItem = _dealTypes[_chosen];
                             });
                           },
                           child: PhysicalModel(

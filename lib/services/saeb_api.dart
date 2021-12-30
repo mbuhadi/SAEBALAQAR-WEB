@@ -24,15 +24,15 @@ class SaebAPI {
   }
 
   static Future<String?> verifyOtp(String phone, String otp) async {
-    print("print3: verify func pre-verify");
+    print("2");
     var res = await Http().post("/auth/verify/",
         noAuth: true, body: jsonEncode({"phone": phone, "otp": otp}));
-    print("print4: verify func post-verify");
+    print("3");
     if (res.statusCode == 201) {
-      print("print5: verify func pre-processAuth");
+      print("4");
       await _processAuthorization(
           jsonDecode(utf8.decode(res.bodyBytes))['access']);
-      print("print6: verify func post-processAuth");
+      print("14");
       return null;
     } else {
       return utf8.decode(res.bodyBytes);
@@ -40,9 +40,9 @@ class SaebAPI {
   }
 
   static Future<void> _processAuthorization(String token) async {
-    print("print7: _processAuth func pre-login");
+    print("5");
     await Get.find<AuthController>().login(token);
-    print("print8: _processAuth func post-login");
+    print("13");
   }
 
   static Future<Iterable<DealModel>> deals() async {

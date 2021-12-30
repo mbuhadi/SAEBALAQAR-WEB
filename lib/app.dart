@@ -11,10 +11,13 @@ import 'controllers/office_controller.dart';
 import 'pages/dealings_list.dart';
 import 'pages/login_page.dart';
 import 'pages/offer_page.dart';
-import 'pages/profile_page.dart' deferred as dealer;
+// import 'pages/profile_page.dart' deferred as dealer;
+import 'pages/profile_page.dart';
 import 'services/saeb_api.dart';
 import 'pages/create_deal_page.dart' deferred as create;
-import 'pages/office_page.dart' deferred as office;
+import 'pages/create_deal_page.dart';
+// import 'pages/office_page.dart' deferred as office;
+import 'pages/office_page.dart';
 import 'pages/payment_result_page.dart';
 import 'saeb_icons.dart';
 import 'pages/landing_page.dart';
@@ -23,7 +26,8 @@ import 'pages/about_us.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
 import 'pages/search_page.dart';
 import 'pages/search_page_2.dart';
-import 'pages/admin_page.dart' deferred as admin;
+// import 'pages/admin_page.dart' deferred as admin;
+import 'pages/admin_page.dart';
 import 'pages/search_page_3.dart';
 import 'pages/search_page_4.dart';
 import 'widgets/colors/colors.dart';
@@ -41,10 +45,6 @@ class MyApp extends StatelessWidget {
   static late AppConfig config;
   MyApp(AppConfig config) {
     MyApp.config = config;
-  }
-  Future<void> getTypes() async {
-    await Get.find<LookupController>().load();
-    // print(Get.find<LookupController>().dealTypes);
   }
 
   @override
@@ -84,17 +84,19 @@ class MyApp extends StatelessWidget {
               editable: false,
             ),
         "/login": (_) => const LoginPage(),
-        '/profile': (_) => FutureBuilder(
-            future: dealer.loadLibrary(),
-            builder: (_, __) => (__.connectionState != ConnectionState.done)
-                ? Center(child: CircularProgressIndicator())
-                : dealer.ProfilePage()),
+        '/profile': (_) => ProfilePage(),
+        // '/profile': (_) => FutureBuilder(
+        //     future: dealer.loadLibrary(),
+        //     builder: (_, __) => (__.connectionState != ConnectionState.done)
+        //         ? const Center(child: CircularProgressIndicator())
+        //         : dealer.ProfilePage()),
         '/offers': (_) => const OfferPage(),
-        '/office': (_) => FutureBuilder(
-            future: office.loadLibrary(),
-            builder: (_, __) => (__.connectionState != ConnectionState.done)
-                ? Center(child: CircularProgressIndicator())
-                : office.OfficePage()),
+        '/office': (_) => const OfficePage(),
+        // '/office': (_) => FutureBuilder(
+        //     future: office.loadLibrary(),
+        //     builder: (_, __) => (__.connectionState != ConnectionState.done)
+        //         ? const Center(child: CircularProgressIndicator())
+        //         : office.OfficePage()),
         '/success': (_) => PaymentResultPage(),
         '/': (_) => LandingPage(
               types: SaebAPI.loadTypesForSearch(),
@@ -108,16 +110,18 @@ class MyApp extends StatelessWidget {
               areas: SaebAPI.loadAreasForSearch(),
             ),
         '/search4': (_) => TestDropDown(source: SaebAPI.loadTypesForSearch()),
-        '/admin': (_) => FutureBuilder(
-            future: admin.loadLibrary(),
-            builder: (_, __) => (__.connectionState != ConnectionState.done)
-                ? Center(child: CircularProgressIndicator())
-                : admin.AdminPage()),
-        '/create': (_) => FutureBuilder(
-            future: create.loadLibrary(),
-            builder: (_, __) => (__.connectionState != ConnectionState.done)
-                ? Center(child: CircularProgressIndicator())
-                : create.CreateDealPage()),
+        '/admin': (_) => AdminPage(),
+        // '/admin': (_) => FutureBuilder(
+        //     future: admin.loadLibrary(),
+        //     builder: (_, __) => (__.connectionState != ConnectionState.done)
+        //         ? const Center(child: CircularProgressIndicator())
+        //         : admin.AdminPage()),
+        '/create': (_) => CreateDealPage(),
+        // '/create': (_) => FutureBuilder(
+        //     future: create.loadLibrary(),
+        //     builder: (_, __) => (__.connectionState != ConnectionState.done)
+        //         ? const Center(child: CircularProgressIndicator())
+        //         : create.CreateDealPage()),
       },
       navigatorKey: nagivator,
       builder: (_, child) {

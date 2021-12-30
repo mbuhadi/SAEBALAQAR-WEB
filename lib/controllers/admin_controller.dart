@@ -59,7 +59,6 @@ class AdminController extends GetxController {
   Future<List<DealModel>> getDeals() async {
     var res = await Http().get('/admin/deals');
     var deals = jsonDecode(utf8.decode(res.bodyBytes)) as List<dynamic>;
-
     return deals.map((e) => DealModel.fromMap(e)).toList();
   }
 
@@ -92,6 +91,7 @@ class AdminController extends GetxController {
   Future<List<PropertyAreaModel>> getPropertyAreas() async {
     var res = await Http().get('/admin/propertyarea');
     var deals = jsonDecode(utf8.decode(res.bodyBytes)) as List<dynamic>;
+    print("API CALL TO PROPERTY AREAS WORKS!");
 
     return deals.map((e) => PropertyAreaModel.fromMap(e)).toList();
   }
