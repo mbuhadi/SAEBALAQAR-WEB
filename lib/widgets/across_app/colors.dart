@@ -12,6 +12,10 @@ var colorC = const Color(0xFFFEFEFE);
 // Extra
 var colorGreyZero = const Color(0xA6fafafa);
 var colorGreyOne = Color(0xA6f5f5f5);
-var colorGreyTwo = Colors.grey[300];
+var colorGreyTwo = Color(0xFFE0E0E0);
+var colorGreyTwoPointFive = Colors.grey[400];
 var colorGreyThree = Colors.grey;
 var colorGreyFour = const Color(0xff5e5e5e);
+
+var colorBHalfOpacity = const Color(0x8000897B);
+var colorGreyThreeReducedOpacity = Color(0xA6E0E0E0);

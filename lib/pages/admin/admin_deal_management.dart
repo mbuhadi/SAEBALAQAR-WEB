@@ -40,7 +40,10 @@ class _AdminDealManagementState extends State<AdminDealManagement> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? Center(child: CircularProgressIndicator())
+        ? const Center(
+            child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Color(0xff00897b)),
+          ))
         : Scaffold(
             body: Align(
               alignment: Alignment.topCenter,

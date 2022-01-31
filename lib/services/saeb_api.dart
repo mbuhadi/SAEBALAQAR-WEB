@@ -45,13 +45,14 @@ class SaebAPI {
     print("13");
   }
 
-  static Future<Iterable<DealModel>> deals() async {
+  static Future<Iterable<DealModel>> deals(query) async {
     // var res = await Http().get("/deals/", noAuth: true);
+    // print(query);
     var res = await http
-        .get(Uri.parse('https://saebbackend.herokuapp.com/api/deals/'));
+        .get(Uri.parse('https://saebbackend.herokuapp.com/api/deals/' + query));
     var body = jsonDecode(utf8.decode(res.bodyBytes));
     var results = body["results"] as List<dynamic>;
-    print(results);
+    // print(results);
     try {
       var l = results.map((d) => DealModel.fromMap(d)).toList();
       return l;

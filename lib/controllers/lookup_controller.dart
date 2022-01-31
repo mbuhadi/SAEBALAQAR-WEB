@@ -17,17 +17,14 @@ class LookupController extends GetxController with StateMixin {
 
   Future<void> loadTypes() async {
     dealTypes.value = (await SaebAPI.dealTypes()).toList();
-    print("loadedTypes");
   }
 
   Future<void> loadOutlooks() async {
     dealOutlooks.value = (await SaebAPI.outlooks()).toList();
-    print("loadedOutlooks");
   }
 
   Future<void> loadAreas() async {
     dealAreas.value = (await SaebAPI.dealAreas()).toList();
-    print("loadedAreas");
   }
 
   void addType(PropertyTypeModel type) {

@@ -8,7 +8,7 @@ import 'admin/admin_office_management.dart';
 import 'admin/admin_propertyarea_management.dart';
 import 'admin/admin_propertyoutlook_management.dart';
 import 'admin/admin_propertytype_management.dart';
-import '../widgets/colors/colors.dart';
+import '../widgets/across_app/colors.dart';
 
 class AdminPage extends StatefulWidget {
   const AdminPage({Key? key}) : super(key: key);

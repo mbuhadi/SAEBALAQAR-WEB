@@ -193,7 +193,11 @@ class _LoginPageState extends State<LoginPage> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: const [
                                       SizedBox(
-                                        child: CircularProgressIndicator(),
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                                  Color(0xff00897b)),
+                                        ),
                                         height: 12.0,
                                         width: 12.0,
                                       ),

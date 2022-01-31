@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'widgets/across_app/colors.dart';
 
 class DealCard extends StatelessWidget {
   const DealCard({
@@ -46,7 +47,10 @@ class DealCard extends StatelessWidget {
                                 fontSize: 30, color: Colors.teal[600])),
                         const SizedBox(width: 6),
                         Text(deal.property_outlook.toString(),
-                            style: Get.textTheme.headline5),
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: colorB)),
                       ],
                     ),
                     Text(timeago.format(deal.created, locale: 'ar'),
@@ -104,7 +108,10 @@ class DealCard extends StatelessWidget {
                                 ? "https://i.imgur.com/KbwPb6Y.jpeg"
                                 : deal.office.image,
                             placeholder: (context, url) =>
-                                const CircularProgressIndicator(),
+                                const CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  Color(0xff00897b)),
+                            ),
                             errorWidget: (context, url, error) =>
                                 const Icon(Icons.error),
                           ),

@@ -46,7 +46,10 @@ class _AdminOfficeManagementState extends State<AdminOfficeManagement> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? Center(child: CircularProgressIndicator())
+        ? Center(
+            child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Color(0xff00897b)),
+          ))
         : Scaffold(
             body: Wrap(
               children: offices

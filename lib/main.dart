@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'services/http.dart';
 import 'package:flutter/material.dart';
 import 'app_config.dart';
@@ -8,6 +10,7 @@ import 'controllers/auth_controller.dart';
 import 'controllers/lookup_controller.dart';
 import 'controllers/office_controller.dart';
 import 'controllers/admin_controller.dart';
+import 'controllers/query_controller.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:universal_html/html.dart';
 import 'pages/dealings_list.dart';
@@ -23,8 +26,6 @@ void main() {
 }
 
 void startApp(AppConfig config) {
-  // print("Running using ${config.name} configuration");
-
   timeago.setLocaleMessages('ar', timeago.ArMessages());
 
   Http(domain: config.domain, commonPath: config.commonPath);
@@ -37,6 +38,9 @@ void startApp(AppConfig config) {
   Get.put<AuthController>(AuthController());
   Get.put<OfficeController>(OfficeController());
   Get.put<AdminController>(AdminController());
+  var querryController = Get.put(QueryController());
+
+  querryController.load();
 
   MyApp.config = config;
   runApp(MyApp(config));

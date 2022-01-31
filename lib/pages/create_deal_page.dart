@@ -154,7 +154,10 @@ class _CreateDealPageState extends State<CreateDealPage> {
                               }
                             },
                             child: loadingIcon
-                                ? CircularProgressIndicator()
+                                ? const CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Color(0xff00897b)),
+                                  )
                                 : Text("Create")),
                       ),
                     ],

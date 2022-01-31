@@ -46,7 +46,10 @@ class _AdminDealerManagementState extends State<AdminDealerManagement> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? const Center(child: CircularProgressIndicator())
+        ? const Center(
+            child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Color(0xff00897b)),
+          ))
         : Scaffold(
             body: Wrap(
               children: dealers

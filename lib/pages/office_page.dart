@@ -6,7 +6,7 @@ import '../controllers/office_controller.dart';
 import '../models/dealer_model.dart';
 import 'dealings_list.dart';
 import '../services/Saeb_API.dart';
-import '../widgets/colors/colors.dart';
+import '../widgets/across_app/colors.dart';
 
 class OfficePage extends StatelessWidget {
   const OfficePage({Key? key}) : super(key: key);
