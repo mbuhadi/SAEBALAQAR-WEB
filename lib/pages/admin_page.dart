@@ -46,16 +46,16 @@ var permToPage = {
       widget: (c, e, d) => AdminDealManagement(
             canDelete: d,
           )),
-  "PROPERTY": PermissionTabModel(
-      label: "Types",
-      widget: (c, e, d) => AdminPropertyTypeManagement(
+  "AREA": PermissionTabModel(
+      label: "Areas",
+      widget: (c, e, d) => AdminPropertyAreaManagement(
             canCreate: c,
             canEdit: e,
             canDelete: d,
           )),
-  "AREA": PermissionTabModel(
-      label: "Areas",
-      widget: (c, e, d) => AdminPropertyAreaManagement(
+  "PROPERTY": PermissionTabModel(
+      label: "Types",
+      widget: (c, e, d) => AdminPropertyTypeManagement(
             canCreate: c,
             canEdit: e,
             canDelete: d,

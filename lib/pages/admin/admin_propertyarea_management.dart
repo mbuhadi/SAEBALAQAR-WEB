@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,11 +23,11 @@ class AdminPropertyAreaManagement extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AdminPropertyTypeManagementState createState() =>
-      _AdminPropertyTypeManagementState();
+  _AdminPropertyAreaManagementState createState() =>
+      _AdminPropertyAreaManagementState();
 }
 
-class _AdminPropertyTypeManagementState
+class _AdminPropertyAreaManagementState
     extends State<AdminPropertyAreaManagement> {
   @override
   Widget build(BuildContext context) {
@@ -42,64 +41,64 @@ class _AdminPropertyTypeManagementState
                     onEdit: !widget.canEdit
                         ? null
                         : () async {
-                            // print("AdminPropertyAreaCard");
-                            // Get.dialog(Center(
-                            //   child: Card(
-                            //     child: Column(
-                            //       mainAxisSize: MainAxisSize.min,
-                            //       children: [
-                            //         FormBuilder(
-                            //           title: "Edit Property Area",
-                            //           fields: [
-                            //             BuilderTextField(
-                            //               id: "name_ar",
-                            //               label: "Arabic name",
-                            //               initValue: e.nameAr,
-                            //             ),
-                            //             BuilderTextField(
-                            //               id: "name_en",
-                            //               label: "English name",
-                            //               initValue: e.nameEn,
-                            //             ),
-                            //           ],
-                            //           onSubmit: (data) async {
-                            //             var body = {};
+                            print("AdminPropertyAreaCard");
+                            Get.dialog(Center(
+                              child: Card(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    FormBuilder(
+                                      title: "Edit Property Area",
+                                      fields: [
+                                        // BuilderTextField(
+                                        //   id: "name_ar",
+                                        //   label: "Arabic name",
+                                        //   initValue: e.nameAr,
+                                        // ),
+                                        // BuilderTextField(
+                                        //   id: "name_en",
+                                        //   label: "English name",
+                                        //   initValue: e.nameEn,
+                                        // ),
+                                      ],
+                                      onSubmit: (data) async {
+                                        var body = {};
 
-                            //             if (data['name_ar'] != null &&
-                            //                 data['name_ar']!.isNotEmpty &&
-                            //                 data["name"] != e.nameAr) {
-                            //               body['name_ar'] = data['name_ar'];
-                            //             }
+                                        if (data['name_ar'] != null &&
+                                            data['name_ar']!.isNotEmpty &&
+                                            data["name"] != e.nameAr) {
+                                          body['name_ar'] = data['name_ar'];
+                                        }
 
-                            //             if (data['name_en'] != null &&
-                            //                 data['name_en']!.isNotEmpty &&
-                            //                 data["name"] != e.nameEn) {
-                            //               body['name_en'] = data['name_en'];
-                            //             }
+                                        if (data['name_en'] != null &&
+                                            data['name_en']!.isNotEmpty &&
+                                            data["name"] != e.nameEn) {
+                                          body['name_en'] = data['name_en'];
+                                        }
 
-                            //             if (body.isEmpty) {
-                            //               return "Nothing to update";
-                            //             }
+                                        if (body.isEmpty) {
+                                          return "Nothing to update";
+                                        }
 
-                            //             var res = await Http().patch(
-                            //                 "/admin/propertyarea/${e.id}",
-                            //                 body: jsonEncode(body));
+                                        var res = await Http().patch(
+                                            "/admin/propertyarea/${e.id}",
+                                            body: jsonEncode(body));
 
-                            //             if (res.statusCode == HttpStatus.ok) {
-                            //               Navigator.of(context).pop();
+                                        if (res.statusCode == HttpStatus.ok) {
+                                          Navigator.of(context).pop();
 
-                            //               await lookup.loadAreas();
+                                          await lookup.loadAreas();
 
-                            //               return null;
-                            //             } else {
-                            //               return utf8.decode(res.bodyBytes);
-                            //             }
-                            //           },
-                            //         ),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ));
+                                          return null;
+                                        } else {
+                                          return utf8.decode(res.bodyBytes);
+                                        }
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ));
                           },
                     onDelete: !widget.canDelete
                         ? null
@@ -152,51 +151,51 @@ class _AdminPropertyTypeManagementState
           : FloatingActionButton(
               child: Icon(Icons.add),
               onPressed: () async {
-                // Get.dialog(Center(
-                //   child: Card(
-                //     child: Column(
-                //       mainAxisSize: MainAxisSize.min,
-                //       children: [
-                //         FormBuilder(
-                //           title: "Create Property Area",
-                //           fields: [
-                //             BuilderTextField(
-                //               id: "name_ar",
-                //               label: "Arabic name",
-                //             ),
-                //             BuilderTextField(
-                //               id: "name_en",
-                //               label: "English name",
-                //             ),
-                //           ],
-                //           onSubmit: (data) async {
-                //             if (data['name_ar'] == null ||
-                //                 data['name_ar']!.isEmpty) {
-                //               return "Missing Arabic name";
-                //             }
-                //             if (data['name_en'] == null ||
-                //                 data['name_en']!.isEmpty) {
-                //               return "Missing English name";
-                //             }
+                Get.dialog(Center(
+                  child: Card(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        FormBuilder(
+                          title: "Create Property Area",
+                          fields: [
+                            // BuilderTextField(
+                            //   id: "name_ar",
+                            //   label: "Arabic name",
+                            // ),
+                            // BuilderTextField(
+                            //   id: "name_en",
+                            //   label: "English name",
+                            // ),
+                          ],
+                          onSubmit: (data) async {
+                            if (data['name_ar'] == null ||
+                                data['name_ar']!.isEmpty) {
+                              return "Missing Arabic name";
+                            }
+                            if (data['name_en'] == null ||
+                                data['name_en']!.isEmpty) {
+                              return "Missing English name";
+                            }
 
-                //             var res = await Http().post("/admin/propertyarea",
-                //                 body: jsonEncode(data));
+                            var res = await Http().post("/admin/propertyarea",
+                                body: jsonEncode(data));
 
-                //             if (res.statusCode == HttpStatus.created) {
-                //               lookup.addArea(PropertyAreaModel.fromJson(
-                //                   utf8.decode(res.bodyBytes)));
+                            if (res.statusCode == HttpStatus.created) {
+                              lookup.addArea(PropertyAreaModel.fromJson(
+                                  utf8.decode(res.bodyBytes)));
 
-                //               Navigator.of(context).pop();
-                //               return null;
-                //             } else {
-                //               return utf8.decode(res.bodyBytes);
-                //             }
-                //           },
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ));
+                              Navigator.of(context).pop();
+                              return null;
+                            } else {
+                              return utf8.decode(res.bodyBytes);
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ));
               },
             ),
     );

@@ -25,27 +25,31 @@ class OfficePage extends StatelessWidget {
           children: office.value == null
               ? <Widget>[Text('Loading office information...')]
               : [
-                  Row(
-                    children: [
-                      Image.network(
-                        office.value!.imageUrl,
-                        height: 100,
-                        width: 100,
-                        fit: BoxFit.contain,
-                        errorBuilder: (_, __, ___) => Container(
-                          color: Colors.grey,
-                          width: 100,
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    color: Color(0xFFFEFEFE),
+                    child: Row(
+                      children: [
+                        Image.network(
+                          office.value!.imageUrl,
                           height: 100,
+                          width: 100,
+                          fit: BoxFit.contain,
+                          errorBuilder: (_, __, ___) => Container(
+                            color: Colors.grey,
+                            width: 100,
+                            height: 100,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 6,
-                      ),
-                      Text(
-                        office.value!.name,
-                        style: Theme.of(context).textTheme.headline4,
-                      )
-                    ],
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Text(
+                          office.value!.name,
+                          style: Theme.of(context).textTheme.headline4,
+                        )
+                      ],
+                    ),
                   ),
                   Row(
                     children: [

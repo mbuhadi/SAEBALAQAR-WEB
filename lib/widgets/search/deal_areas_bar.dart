@@ -33,9 +33,9 @@ class _CustomDropDownOneState extends State<AreasBarTwo>
     with TickerProviderStateMixin {
   // bool isDropDownOpened = false;
   final keyBarOne = GlobalKey();
-  int barLimit = 5;
+  int barLimit = 4;
   bool reachedBarLimit = false;
-  double widthOfBarOne = 510;
+  double widthOfBarOne = 430;
   double barheight = 0;
   List _dealAreas = <PropertyAreaModel>[];
   List _dealAreasForDisplay = <PropertyAreaModel>[];
@@ -119,162 +119,181 @@ class _CustomDropDownOneState extends State<AreasBarTwo>
                         }
                       });
                     },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        // const SizedBox(width: 98),
-                        Column(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            OnHoverButtonTwo(
-                              builder: (isHovered) {
-                                final colorOfBackground = isHovered
-                                    ? colorGreyThreeReducedOpacity
-                                    : colorGreyOne;
-                                return MouseRegion(
-                                  cursor: SystemMouseCursors.click,
-                                  child: Container(
-                                    key: keyBarOne,
-                                    width: widthOfBarOne * sizeRatio,
-                                    decoration: BoxDecoration(
-                                      color: widget.dropDownBool
-                                          ? colorGreyZero
-                                          : colorOfBackground,
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(
-                                        style: widget.dropDownBool
-                                            ? BorderStyle.solid
-                                            : BorderStyle.none,
-                                        color: widget.dropDownBool
-                                            ? colorB
-                                            : colorOfBackground,
-                                        width: 2,
-                                      ),
-                                    ),
-                                    padding: const EdgeInsets.fromLTRB(
-                                        15, 10, 15, 10),
-                                    child: Wrap(
-                                      // spacing: 30,
-                                      children: [
-                                        reachedBarLimit
-                                            ? const SizedBox(
-                                                height: 0,
-                                              )
-                                            : Row(
-                                                children: [
-                                                  const SizedBox(width: 5),
-                                                  SizedBox(
-                                                    child: Text(
-                                                        "اختز المناطق ...",
-                                                        style: TextStyle(
-                                                            color: widget
-                                                                    .dropDownBool
-                                                                ? colorB
-                                                                : colorGreyFour,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 12 *
-                                                                sizeRatio)),
-                                                    height: 15,
-                                                  ),
-                                                  const Spacer(flex: 1),
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .fromLTRB(0, 0, 0, 8),
-                                                    child: SizedBox(
-                                                      height: 20,
-                                                      width:
-                                                          (widthOfBarOne / 2) *
-                                                              sizeRatio,
-                                                      child: _SearchBar(),
-                                                    ),
-                                                  ),
-                                                  const Spacer(flex: 4),
-                                                  widget.dropDownBool
-                                                      ? Icon(
-                                                          Icons
-                                                              .keyboard_arrow_up,
-                                                          color: colorB)
-                                                      : Icon(
-                                                          Icons
-                                                              .keyboard_arrow_down,
-                                                          color: colorGreyFour),
-                                                  const SizedBox(width: 5)
-                                                ],
-                                              ),
-                                        for (var dealArea in dealAreasInBar)
-                                          _CreateAreaTag(dealArea)
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                            const SizedBox(
-                              height: 3,
-                            ),
-                            widget.dropDownBool
-                                ? reachedBarLimit
-                                    ? Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            5, 5, 20, 5),
+                            // const SizedBox(width: 98),
+                            Column(
+                              children: [
+                                OnHoverButtonTwo(
+                                  builder: (isHovered) {
+                                    final colorOfBackground = isHovered
+                                        ? colorGreyThreeReducedOpacity
+                                        : colorGreyOne;
+                                    return MouseRegion(
+                                      cursor: SystemMouseCursors.click,
+                                      child: Container(
+                                        key: keyBarOne,
                                         width: widthOfBarOne * sizeRatio,
                                         decoration: BoxDecoration(
-                                          color: colorGreyZero,
-                                          border: Border.all(
-                                              color: colorB, width: 2),
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                        ),
-                                        child: Text("لا يمكنك اضافة المزيد",
-                                            style: TextStyle(
-                                                fontSize: 15 * sizeRatio,
-                                                fontWeight: FontWeight.bold)),
-                                      )
-                                    : Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 5, 0, 5),
-                                        height: 200,
-                                        width: widthOfBarOne * sizeRatio,
-                                        decoration: BoxDecoration(
-                                          color: colorGreyZero,
-                                          border: Border.all(
-                                              color: const Color(0xff00897B),
-                                              width: 2),
+                                          color: widget.dropDownBool
+                                              ? colorGreyZero
+                                              : colorOfBackground,
                                           borderRadius:
                                               BorderRadius.circular(20),
+                                          border: Border.all(
+                                            style: widget.dropDownBool
+                                                ? BorderStyle.solid
+                                                : BorderStyle.none,
+                                            color: widget.dropDownBool
+                                                ? colorB
+                                                : colorOfBackground,
+                                            width: 2,
+                                          ),
                                         ),
-                                        child: Scrollbar(
-                                          child: _dealAreasForDisplay.isNotEmpty
-                                              ? ListView.builder(
-                                                  // itemCount: _dealAreasForDisplay.length,
+                                        padding: const EdgeInsets.fromLTRB(
+                                            15, 10, 15, 10),
+                                        child: Wrap(
+                                          // spacing: 30,
+                                          children: [
+                                            reachedBarLimit
+                                                ? const SizedBox(
+                                                    height: 0,
+                                                  )
+                                                : Row(
+                                                    children: [
+                                                      const SizedBox(width: 5),
+                                                      SizedBox(
+                                                        child: Text(
+                                                            "اختز المناطق ...",
+                                                            style: TextStyle(
+                                                                color: widget
+                                                                        .dropDownBool
+                                                                    ? colorB
+                                                                    : colorGreyFour,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 12 *
+                                                                    sizeRatio)),
+                                                        height: 15,
+                                                      ),
+                                                      const Spacer(flex: 1),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .fromLTRB(
+                                                                0, 0, 0, 8),
+                                                        child: SizedBox(
+                                                          height: 20,
+                                                          width:
+                                                              (widthOfBarOne /
+                                                                      2) *
+                                                                  sizeRatio,
+                                                          child: _SearchBar(),
+                                                        ),
+                                                      ),
+                                                      const Spacer(flex: 4),
+                                                      widget.dropDownBool
+                                                          ? Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_up,
+                                                              color: colorB)
+                                                          : Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_down,
+                                                              color:
+                                                                  colorGreyFour),
+                                                      const SizedBox(width: 5)
+                                                    ],
+                                                  ),
+                                            for (var dealArea in dealAreasInBar)
+                                              _CreateAreaTag(dealArea)
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 3,
+                                ),
+                                widget.dropDownBool
+                                    ? reachedBarLimit
+                                        ? Container(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                5, 5, 20, 5),
+                                            width: widthOfBarOne * sizeRatio,
+                                            decoration: BoxDecoration(
+                                              color: colorGreyZero,
+                                              border: Border.all(
+                                                  color: colorB, width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                            ),
+                                            child: Text("لا يمكنك اضافة المزيد",
+                                                style: TextStyle(
+                                                    fontSize: 15 * sizeRatio,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          )
+                                        : Container(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                0, 5, 0, 5),
+                                            height: 200,
+                                            width: widthOfBarOne * sizeRatio,
+                                            decoration: BoxDecoration(
+                                              color: colorGreyZero,
+                                              border: Border.all(
+                                                  color:
+                                                      const Color(0xff00897B),
+                                                  width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                            child: Scrollbar(
+                                              child: _dealAreasForDisplay
+                                                      .isNotEmpty
+                                                  ? ListView.builder(
+                                                      // itemCount: _dealAreasForDisplay.length,
 
-                                                  itemCount:
-                                                      _dealAreasForDisplay
-                                                          .length,
-                                                  // ? _dealAreas.length
-                                                  // : _dealAreasForDisplay.length,
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    return _ListItems(index);
-                                                  },
-                                                )
-                                              : Center(
-                                                  child: Text(
-                                                  "لا توجد مناطق",
-                                                  style: TextStyle(
-                                                      fontSize: 20 * sizeRatio,
-                                                      color: colorA,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                )),
-                                        ))
-                                : const SizedBox(
-                                    height: 0,
-                                  ),
+                                                      itemCount:
+                                                          _dealAreasForDisplay
+                                                              .length,
+                                                      // ? _dealAreas.length
+                                                      // : _dealAreasForDisplay.length,
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        return _ListItems(
+                                                            index);
+                                                      },
+                                                    )
+                                                  : Center(
+                                                      child: Text(
+                                                      "لا توجد مناطق",
+                                                      style: TextStyle(
+                                                          fontSize:
+                                                              20 * sizeRatio,
+                                                          color: colorA,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    )),
+                                            ))
+                                    : const SizedBox(
+                                        height: 0,
+                                      ),
+                              ],
+                            ),
+                            _SearchButton(),
+                            SizedBox(
+                              width: widthOfBarOne / 7,
+                            )
                           ],
                         ),
-                        _SearchButton()
                       ],
                     )),
               );
@@ -343,7 +362,7 @@ class _CustomDropDownOneState extends State<AreasBarTwo>
                 border: Border.all(width: 2, color: colorB),
               ),
               height: 30,
-              width: (widthOfBarOne / 5.5) * sizeRatio,
+              width: (widthOfBarOne / 5) * sizeRatio,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

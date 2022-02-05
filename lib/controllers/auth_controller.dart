@@ -33,7 +33,7 @@ class AuthController extends GetxController {
 
   Future<void> loadProfile() async {
     var response = await Http().get('/dealer/');
-    dealer.value = DealerModel.fromJson(response.body);
+    dealer.value = DealerModel.fromJson(utf8.decode(response.bodyBytes));
   }
 
   Future<void> loadOffers() async {

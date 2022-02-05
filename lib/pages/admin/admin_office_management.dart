@@ -58,74 +58,74 @@ class _AdminOfficeManagementState extends State<AdminOfficeManagement> {
                         onEdit: !widget.canEdit
                             ? null
                             : () async {
-                                // print("AdminOfficeManagement");
-                                // Get.dialog(Center(
-                                //   child: Card(
-                                //     child: Column(
-                                //       mainAxisSize: MainAxisSize.min,
-                                //       children: [
-                                //         FormBuilder(
-                                //           title: "Edit Office",
-                                //           fields: [
-                                //             BuilderTextField(
-                                //               id: "owner",
-                                //               label: "Owner phone",
-                                //               initValue: e.owner,
-                                //             ),
-                                //             BuilderTextField(
-                                //               id: "name",
-                                //               label: "Office name",
-                                //               initValue: e.name,
-                                //             ),
-                                //             BuilderImageField(
-                                //               id: "image",
-                                //               label: "Office Image",
-                                //               initValue: e.image,
-                                //             ),
-                                //           ],
-                                //           onSubmit: (data) async {
-                                //             var body = {};
+                                print("AdminOfficeManagement");
+                                Get.dialog(Center(
+                                  child: Card(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        FormBuilder(
+                                          title: "Edit Office",
+                                          fields: [
+                                            // BuilderTextField(
+                                            //   id: "owner",
+                                            //   label: "Owner phone",
+                                            //   initValue: e.owner,
+                                            // ),
+                                            // BuilderTextField(
+                                            //   id: "name",
+                                            //   label: "Office name",
+                                            //   initValue: e.name,
+                                            // ),
+                                            // BuilderImageField(
+                                            //   id: "image",
+                                            //   label: "Office Image",
+                                            //   initValue: e.image,
+                                            // ),
+                                          ],
+                                          onSubmit: (data) async {
+                                            var body = {};
 
-                                //             if (data['name'] != null &&
-                                //                 data["name"] != e.name) {
-                                //               body['name_ar'] = data['name'];
-                                //             }
-                                //             if (data['owner'] != null &&
-                                //                 data["owner"] != e.owner) {
-                                //               body['owner'] = data['owner'];
-                                //             }
-                                //             if (data['image'] != null &&
-                                //                 data["image"] != e.image) {
-                                //               body['image'] = data['image'];
-                                //             }
+                                            if (data['name'] != null &&
+                                                data["name"] != e.name) {
+                                              body['name_ar'] = data['name'];
+                                            }
+                                            if (data['owner'] != null &&
+                                                data["owner"] != e.owner) {
+                                              body['owner'] = data['owner'];
+                                            }
+                                            if (data['image'] != null &&
+                                                data["image"] != e.image) {
+                                              body['image'] = data['image'];
+                                            }
 
-                                //             body['name_en'] = "no name";
+                                            body['name_en'] = "no name";
 
-                                //             var res = await Http().patch(
-                                //                 "/admin/offices/${e.id}",
-                                //                 body: jsonEncode(body));
+                                            var res = await Http().patch(
+                                                "/admin/offices/${e.id}",
+                                                body: jsonEncode(body));
 
-                                //             if (res.statusCode ==
-                                //                 HttpStatus.ok) {
-                                //               Navigator.of(context).pop();
+                                            if (res.statusCode ==
+                                                HttpStatus.ok) {
+                                              Navigator.of(context).pop();
 
-                                //               Get.find<AdminController>()
-                                //                   .getOffices()
-                                //                   .then((value) => setState(() {
-                                //                         isLoading = false;
-                                //                         offices = value;
-                                //                       }));
+                                              Get.find<AdminController>()
+                                                  .getOffices()
+                                                  .then((value) => setState(() {
+                                                        isLoading = false;
+                                                        offices = value;
+                                                      }));
 
-                                //               return null;
-                                //             } else {
-                                //               return utf8.decode(res.bodyBytes);
-                                //             }
-                                //           },
-                                //         ),
-                                //       ],
-                                //     ),
-                                //   ),
-                                // ));
+                                              return null;
+                                            } else {
+                                              return utf8.decode(res.bodyBytes);
+                                            }
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ));
                               },
                         onDelete: !widget.canDelete
                             ? null
@@ -182,66 +182,65 @@ class _AdminOfficeManagementState extends State<AdminOfficeManagement> {
                 : FloatingActionButton(
                     child: Icon(Icons.add),
                     onPressed: () async {
-                      //   Get.dialog(Center(
-                      //     child: Card(
-                      //       child: Column(
-                      //         mainAxisSize: MainAxisSize.min,
-                      //         children: [
-                      //           Text('Create Office'),
-                      //           FormBuilder(
-                      //             title: "Create Office",
-                      //             fields: [
-                      //               BuilderTextField(
-                      //                 id: "owner_name",
-                      //                 label: "Owner name",
-                      //               ),
-                      //               BuilderTextField(
-                      //                 id: "owner_phone",
-                      //                 label: "Owner phone",
-                      //               ),
-                      //               BuilderTextField(
-                      //                 id: "office_name",
-                      //                 label: "Office name",
-                      //               ),
-                      //               BuilderImageField(
-                      //                 id: "image",
-                      //                 label: "Office Image",
-                      //               ),
-                      //             ],
-                      //             onSubmit: (data) async {
-                      //               var res = await Http().post("/admin/offices",
-                      //                   body: jsonEncode({
-                      //                     "name_ar": data['office_name'],
-                      //                     "name_en": data['office_name'],
-                      //                     'image': data['image'],
-                      //                     "owner": {
-                      //                       "phone": data['owner_phone'],
-                      //                       "name": data['owner_name'],
-                      //                     }
-                      //                   }));
+                      Get.dialog(Center(
+                        child: Card(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              FormBuilder(
+                                title: "Create Office",
+                                fields: [
+                                  // BuilderTextField(
+                                  //   id: "owner_name",
+                                  //   label: "Owner name",
+                                  // ),
+                                  // BuilderTextField(
+                                  //   id: "owner_phone",
+                                  //   label: "Owner phone",
+                                  // ),
+                                  // BuilderTextField(
+                                  //   id: "office_name",
+                                  //   label: "Office name",
+                                  // ),
+                                  // BuilderImageField(
+                                  //   id: "image",
+                                  //   label: "Office Image",
+                                  // ),
+                                ],
+                                onSubmit: (data) async {
+                                  var res = await Http().post("/admin/offices",
+                                      body: jsonEncode({
+                                        "name_ar": data['office_name'],
+                                        "name_en": data['office_name'],
+                                        'image': data['image'],
+                                        "owner": {
+                                          "phone": data['owner_phone'],
+                                          "name": data['owner_name'],
+                                        }
+                                      }));
 
-                      //               if (res.statusCode == HttpStatus.created) {
-                      //                 Navigator.of(context).pop();
+                                  if (res.statusCode == HttpStatus.created) {
+                                    Navigator.of(context).pop();
 
-                      //                 Get.find<AdminController>()
-                      //                     .getOffices()
-                      //                     .then((value) => setState(() {
-                      //                           isLoading = false;
-                      //                           offices = value;
-                      //                         }));
+                                    Get.find<AdminController>()
+                                        .getOffices()
+                                        .then((value) => setState(() {
+                                              isLoading = false;
+                                              offices = value;
+                                            }));
 
-                      //                 return null;
-                      //               } else {
-                      //                 return utf8.decode(res.bodyBytes);
-                      //               }
-                      //             },
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ));
-                      // },
-                    }),
+                                    return null;
+                                  } else {
+                                    return utf8.decode(res.bodyBytes);
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ));
+                    },
+                  ),
           );
   }
 }

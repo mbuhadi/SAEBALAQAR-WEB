@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../services/Saeb_API.dart';
+import '../widgets/across_app/colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -19,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   String? password;
   bool isLoading = false;
   bool verifyingOTP = false;
+  FocusNode myFocusNode = new FocusNode();
 
   @override
   void initState() {
@@ -86,8 +88,19 @@ class _LoginPageState extends State<LoginPage> {
                             onFieldSubmitted: (s) =>
                                 FocusScope.of(context).requestFocus(),
                             controller: userNameController,
-                            decoration: const InputDecoration(
-                              border: UnderlineInputBorder(),
+                            decoration: InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Color(0xff00897B)),
+                              ),
+                              // labelStyle: TextStyle(
+                              //     fontSize: 20.0,
+                              //     color: myFocusNode.hasFocus
+                              //         ? Color(0xff00897B)
+                              //         : Colors.black),
                               labelText: 'رقم الهاتف',
                             ),
                             style: verifyingOTP
@@ -116,7 +129,12 @@ class _LoginPageState extends State<LoginPage> {
                               return null;
                             },
                             decoration: const InputDecoration(
-                                border: UnderlineInputBorder(),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.yellow),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.yellow),
+                                ),
                                 labelText:
                                     'الرجاء ادخال الرقم السري الذي تم ارساله لهاتفك'),
                           ),
@@ -131,6 +149,16 @@ class _LoginPageState extends State<LoginPage> {
                               width: 8,
                             ),
                             ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.resolveWith<Color>(
+                                    (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return colorB;
+                                      return colorB; // Use the component's default.
+                                    },
+                                  ),
+                                ),
                                 onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
                                     setState(() {
@@ -157,18 +185,14 @@ class _LoginPageState extends State<LoginPage> {
                                       }
                                     } else {
                                       try {
-                                        print("1");
                                         var verification =
                                             await SaebAPI.verifyOtp(
                                                 userNameController.text,
                                                 passwordController.text);
-                                        print("15");
                                         if (verification == null) {
                                           // Navigator.of(context).pop();
-                                          print("16");
                                           Navigator.pushReplacementNamed(
                                               context, '/profile');
-                                          print("17");
                                           // const AlertDialog(
                                           //     title: Text('Login Successful!'));
                                         } else {
